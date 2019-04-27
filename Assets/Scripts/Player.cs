@@ -201,4 +201,14 @@ public class Player : MonoBehaviour
     {
         healthBar.text = "Health : " + CurrentHealth + "/" + MAX_HEALTH;
     }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if(collision.gameObject.CompareTag("Projectile"))
+        {
+            print("hello");
+            CurrentHealth--;
+            UpdateHealth();
+        }
+    }
 }
