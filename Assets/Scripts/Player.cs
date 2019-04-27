@@ -23,8 +23,12 @@ public class Player : MonoBehaviour
     int facing_x = 1;
     int facing_y = 0;
 
+    private Animator anim;
+
+
     void Start()
     {
+        anim = this.GetComponent<Animator>();
         Application.targetFrameRate = 60;
         sceneController = GameObject.FindGameObjectWithTag("SceneController").GetComponent("SceneController") as SceneController;
         //transform = GetComponent<Transform>();
@@ -40,8 +44,8 @@ public class Player : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        float h_input = 0;
-        float v_input = 0;
+        int h_input = 0;
+        int v_input = 0;
         if (Input.GetKey(KeyCode.UpArrow) || Input.GetKey(KeyCode.W))
             v_input++;
         if (Input.GetKey(KeyCode.DownArrow) || Input.GetKey(KeyCode.S))
@@ -115,6 +119,10 @@ public class Player : MonoBehaviour
         MoveY(velocity.y);
 
         transform.position = new Vector3(position.x, position.y);
+
+        anim.SetInteger("YSpeed", v_input);
+        anim.SetInteger("Health", CurrentHealth);
+
 
     }
 
