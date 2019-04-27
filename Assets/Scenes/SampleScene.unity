@@ -259,15 +259,25 @@ PrefabInstance:
     - target: {fileID: 215012945360975748, guid: 03b58eb7a7b29a948a882f2c7e3e3ac5,
         type: 3}
       propertyPath: bulletPrefab
-      value:
+      value: 
       objectReference: {fileID: 8013947066682193828, guid: 2b6e5b5369336bd41a73af64e62e5f92,
         type: 3}
     - target: {fileID: 215012945360975750, guid: 03b58eb7a7b29a948a882f2c7e3e3ac5,
         type: 3}
       propertyPath: m_Sprite
-      value:
+      value: 
       objectReference: {fileID: 7596221802254497052, guid: e51edb45301f0c0408c6598ef37748e9,
         type: 3}
+    - target: {fileID: 6045895456825207103, guid: 03b58eb7a7b29a948a882f2c7e3e3ac5,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4866664100002201333, guid: 03b58eb7a7b29a948a882f2c7e3e3ac5,
+        type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: 29310bc41fb0f1543af754ace4b43925, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 03b58eb7a7b29a948a882f2c7e3e3ac5, type: 3}
 --- !u!1001 &1335376630210189594
