@@ -29,7 +29,7 @@ public class SceneController : MonoBehaviour
     {
         foreach(GameObject obstacle in obstacles)
         {
-            Vector2Int obstaclePoint = new Vector2Int((int)Math.Round(obstacle.transform.position.x), (int)Math.Round(obstacle.transform.position.y));
+            Vector2Int obstaclePoint = new Vector2Int((int)Math.Round(obstacle.transform.position.x - (obstacle.transform.localScale.x /2)), (int)Math.Round(obstacle.transform.position.y - (obstacle.transform.localScale.y / 2)));
             Vector2Int obstacleRect = new Vector2Int((int)Math.Round(obstacle.transform.localScale.x), (int)Math.Round(obstacle.transform.localScale.y));
             RectInt rect = new RectInt(obstaclePoint, obstacleRect);
             if(rect.Contains(position))
