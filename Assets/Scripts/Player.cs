@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Player : MonoBehaviour
 {
@@ -26,14 +27,14 @@ public class Player : MonoBehaviour
     int facing_y = 0;
 
     private Animator anim;
-
+    private Text healthBar;
 
     void Start()
     {
         anim = this.GetComponent<Animator>();
         Application.targetFrameRate = 60;
         sceneController = GameObject.FindGameObjectWithTag("SceneController").GetComponent("SceneController") as SceneController;
-        //transform = GetComponent<Transform>();
+        healthBar =  GameObject.FindGameObjectWithTag("Health").GetComponent<Text>();
     }
 
     float Approach(float value, float target, float amount)
@@ -109,7 +110,7 @@ public class Player : MonoBehaviour
             if(CurrentHealth > 0)
             {
                 CurrentHealth--;
-                UpdateAnimation();
+                UpdateHealth();
                 SpawnBullet();
             }
         }
@@ -197,8 +198,8 @@ public class Player : MonoBehaviour
         return 0;
     }
 
-    private void UpdateAnimation()
+    private void UpdateHealth()
     {
-
+        healthBar.text = "Health : " + CurrentHealth + "/" + MAX_HEALTH;
     }
 }
