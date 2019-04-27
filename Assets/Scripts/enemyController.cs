@@ -8,16 +8,12 @@ public class enemyController : MonoBehaviour
 {
     //public GameObject projectile;
     public Transform destinations;              //Keeps all the possible destinations in memory.
-    //public Transform spanwPoints;
-    //public NavMeshSurface surface;              //Allows to dynamicly bake the nav mesh.
     public GameObject player;
-    public int vitesseMouvement;
     public int cadence;
     public int pointVie;
     public int targetingRange;
     public GameObject bulletPrefab;
     //public typeTire;
-    //private NavMeshAgent nav;                   //Keeps the nav Mesh agent in memory to allow Mr. Bad Guy to move.
     private int randomDestination;
     private bool isPlayerInRange = false;
     private NavMeshAgent2D nav;
@@ -30,7 +26,7 @@ public class enemyController : MonoBehaviour
         nav = GetComponent<NavMeshAgent2D>();
         fixedDestinations = new Transform[destinations.childCount];
 
-        for(int i = 0; i < destinations.childCount; i++)
+        for (int i = 0; i < destinations.childCount; i++)
         {
             fixedDestinations[i] = destinations.GetChild(i);
             fixedDestinations[i].position = new Vector3((fixedDestinations[i].position.x * 3) + 570,
