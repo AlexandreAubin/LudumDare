@@ -5,6 +5,7 @@ using UnityEngine;
 public class Bullet : MonoBehaviour
 {
     private SceneController sceneController;
+    private Animator anim;
 
     Vector2 velocity;
     Vector2 position;
@@ -14,6 +15,7 @@ public class Bullet : MonoBehaviour
     void Start()
     {
         sceneController = GameObject.FindGameObjectWithTag("SceneController").GetComponent("SceneController") as SceneController;
+        anim = this.GetComponent<Animator>();
     }
 
     // Update is called once per frame
@@ -26,6 +28,7 @@ public class Bullet : MonoBehaviour
         }
         else
         {
+            anim.SetBool("isMoving", false);
             Moving = false;
             velocity = new Vector2(0, 0);
         }
