@@ -53,10 +53,18 @@ public class enemyController : MonoBehaviour
              isPlayerInRange = false;
          }*/
 
+        /*if (Input.GetMouseButton(0))
+        {
+            Vector3 w = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+            GetComponent<NavMeshAgent2D>().destination = w;
+            print(Input.mousePosition);
+        }*/
+
         if (nav.remainingDistance <= 1 && !isPlayerInRange)
         {
             
             randomDestination = Random.Range(0, destinations.childCount);
+            print(randomDestination);
             Vector3 w = Camera.main.ScreenToWorldPoint(destinations.GetChild(randomDestination).position);
             nav.destination = w;
         }
