@@ -19,6 +19,8 @@ public class Player : MonoBehaviour
     Vector2 remainder = Vector2.zero;
 
     public GameObject bulletPrefab;
+    public GameObject enemy;
+    public Transform SpawnPoints;
 
     int facing_x = 1;
     int facing_y = 0;
