@@ -4,13 +4,17 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
+    
     private SceneController sceneController;
 
     Vector2Int position = Vector2Int.zero;
-    Vector2 velocity = Vector2.zero;
+    public Vector2 velocity = Vector2.zero;
 
     float maxrun = 1;
     float acceleration = 0.6f;
+
+    public const int MAX_HEALTH = 30;
+    public int CurrentHealth = MAX_HEALTH;
 
     Vector2 remainder = Vector2.zero;
 
@@ -21,8 +25,12 @@ public class Player : MonoBehaviour
     int facing_x = 1;
     int facing_y = 0;
 
+    private Animator anim;
+
+
     void Start()
     {
+        anim = this.GetComponent<Animator>();
         Application.targetFrameRate = 60;
         sceneController = GameObject.FindGameObjectWithTag("SceneController").GetComponent("SceneController") as SceneController;
         //transform = GetComponent<Transform>();
@@ -38,8 +46,8 @@ public class Player : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        float h_input = 0;
-        float v_input = 0;
+        int h_input = 0;
+        int v_input = 0;
         if (Input.GetKey(KeyCode.UpArrow) || Input.GetKey(KeyCode.W))
             v_input++;
         if (Input.GetKey(KeyCode.DownArrow) || Input.GetKey(KeyCode.S))
@@ -98,7 +106,12 @@ public class Player : MonoBehaviour
 
         if (fire)
         {
-            SpawnBullet();
+            if(CurrentHealth > 0)
+            {
+                CurrentHealth--;
+                UpdateAnimation();
+                SpawnBullet();
+            }
         }
 
         velocity.x = Approach(velocity.x, h_input * maxrun, acceleration);
@@ -108,6 +121,10 @@ public class Player : MonoBehaviour
         MoveY(velocity.y);
 
         transform.position = new Vector3(position.x, position.y);
+
+        anim.SetInteger("YSpeed", v_input);
+        anim.SetInteger("Health", CurrentHealth);
+
 
     }
 
@@ -178,5 +195,10 @@ public class Player : MonoBehaviour
         if (amount > 0.0) return 1;
         if (amount < 0.0) return -1;
         return 0;
+    }
+
+    private void UpdateAnimation()
+    {
+
     }
 }
