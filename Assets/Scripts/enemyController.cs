@@ -16,6 +16,7 @@ public class enemyController : MonoBehaviour
     //public typeTire;
     private int randomDestination;
     private bool isPlayerInRange = false;
+    private bool destinationSet = false;
     private NavMeshAgent2D nav;
     private Transform[] fixedDestinations;
 
@@ -29,12 +30,13 @@ public class enemyController : MonoBehaviour
         for (int i = 0; i < destinations.childCount; i++)
         {
             fixedDestinations[i] = destinations.GetChild(i);
-            fixedDestinations[i].position = new Vector3((fixedDestinations[i].position.x * 3) + 570,
-                                                        (fixedDestinations[i].position.y * 2) + 280, 0);
+            fixedDestinations[i].position = new Vector3((fixedDestinations[i].position.x * 2) + 200,
+                                                        (fixedDestinations[i].position.y * 3) + 75, 0);
         }
 
         Vector3 w = Camera.main.ScreenToWorldPoint(fixedDestinations[randomDestination].position);
         nav.destination = w;
+        destinationSet = true;
 
         InvokeRepeating("InstantiateEnemyFire", cadence, cadence); //Make the enemy shoot
     }
@@ -42,30 +44,35 @@ public class enemyController : MonoBehaviour
     // Update Mr. Bad Guy's destination.
     void Update()
     {
-        if (Vector3.Distance(player.transform.position, transform.position) <= targetingRange)
+        if (!destinationSet)
         {
-            isPlayerInRange = true;
-            nav.SetDestination(player.transform.position);
-            print("yes");
-        }
-        else if(isPlayerInRange)
-        {
-            isPlayerInRange = false;
+            if (Vector3.Distance(player.transform.position, transform.position) <= targetingRange)
+            {
+                isPlayerInRange = true;
+                nav.SetDestination(player.transform.position);
+                print("yes");
+            }
+            else if (isPlayerInRange)
+            {
+                isPlayerInRange = false;
 
-            randomDestination = Random.Range(0, destinations.childCount);
-            Vector3 w = Camera.main.ScreenToWorldPoint(fixedDestinations[randomDestination].position);
-            nav.destination = w;
-            print("enemy gave up");
-        }
+                randomDestination = Random.Range(0, destinations.childCount);
+                Vector3 w = Camera.main.ScreenToWorldPoint(fixedDestinations[randomDestination].position);
+                nav.destination = w;
+                print("enemy gave up");
+            }
 
-        if (nav.remainingDistance <= 1 && !isPlayerInRange)
-        {
-            
-            randomDestination = Random.Range(0, destinations.childCount);
-            print(randomDestination);
-            Vector3 w = Camera.main.ScreenToWorldPoint(fixedDestinations[randomDestination].position);
-            nav.destination = w;
+            if (Vector3.Distance(transform.position, nav.destination) <= 1 && !isPlayerInRange)
+            {
+                randomDestination = Random.Range(0, destinations.childCount);
+                print(randomDestination);
+                Vector3 w = Camera.main.ScreenToWorldPoint(fixedDestinations[randomDestination].position);
+                nav.destination = w;
+                print("dest: " + nav.destination);
+            }
         }
+        else
+            destinationSet = false;
     }
 
     // Spanws a magic pickup.
