@@ -19,7 +19,7 @@ public class Player : MonoBehaviour
 
     Vector2 remainder = Vector2.zero;
 
-    public GameObject bulletPrefab;
+    //public GameObject bulletPrefab;
     public GameObject enemy;
     public Transform SpawnPoints;
 
@@ -131,11 +131,7 @@ public class Player : MonoBehaviour
 
     void SpawnBullet()
     {
-        GameObject bulletGO = Instantiate(bulletPrefab, transform);
-        Bullet bullet = bulletGO.GetComponent<Bullet>();
-        bullet.SetPosition(position);
-        bullet.SetDirection(facing_x, facing_y);
-
+        sceneController.SpawnBullet(transform,new Vector2Int(position.x,position.y), facing_x, facing_y);
     }
 
     void MoveX(float amount)
@@ -198,7 +194,7 @@ public class Player : MonoBehaviour
         return 0;
     }
 
-    private void UpdateHealth()
+    public void UpdateHealth()
     {
         healthBar.text = "Health : " + CurrentHealth + "/" + MAX_HEALTH;
     }
