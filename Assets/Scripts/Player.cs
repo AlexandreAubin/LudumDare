@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
+    private SceneController sceneController;
 
     Vector2Int position = Vector2Int.zero;
     Vector2 velocity = Vector2.zero;
@@ -21,6 +22,8 @@ public class Player : MonoBehaviour
     void Start()
     {
         Application.targetFrameRate = 60;
+        sceneController = GameObject.FindGameObjectWithTag("SceneController").GetComponent("SceneController") as SceneController;
+        //transform = GetComponent<Transform>();
     }
 
     float Approach(float value, float target, float amount)
@@ -112,7 +115,7 @@ public class Player : MonoBehaviour
         Bullet bullet = bulletGO.GetComponent<Bullet>();
         bullet.SetPosition(position);
         bullet.SetDirection(facing_x, facing_y);
-        
+
     }
 
     void MoveX(float amount)
@@ -127,14 +130,14 @@ public class Player : MonoBehaviour
             {
                 if (collideAt(position + new Vector2Int(sign, 0)))
                 {
-                    break;    
+                    break;
                 }
                 else
-                { 
+                {
                     position.x += sign;
                     move -= sign;
                 }
-                
+
             }
         }
     }
@@ -165,8 +168,7 @@ public class Player : MonoBehaviour
 
     bool collideAt(Vector2Int position)
     {
-        // This should check collision with the level.
-        return false;
+        return sceneController.isThereCollision(position,this.gameObject);
     }
 
     int Sign(float amount)
