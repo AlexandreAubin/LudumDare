@@ -35,13 +35,13 @@ public class Player : MonoBehaviour
     {
         float h_input = 0;
         float v_input = 0;
-        if (Input.GetKey(KeyCode.UpArrow))
+        if (Input.GetKey(KeyCode.UpArrow) || Input.GetKey(KeyCode.W))
             v_input++;
-        if (Input.GetKey(KeyCode.DownArrow))
+        if (Input.GetKey(KeyCode.DownArrow) || Input.GetKey(KeyCode.S))
             v_input--;
-        if (Input.GetKey(KeyCode.LeftArrow))
+        if (Input.GetKey(KeyCode.LeftArrow) || Input.GetKey(KeyCode.A))
             h_input--;
-        if (Input.GetKey(KeyCode.RightArrow))
+        if (Input.GetKey(KeyCode.RightArrow) || Input.GetKey(KeyCode.D))
             h_input++;
         bool fire = Input.GetMouseButtonDown(0);
         Vector3 mousev3 = Camera.main.ScreenToWorldPoint(Input.mousePosition);
