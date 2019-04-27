@@ -10,6 +10,8 @@ TagManager:
   - Projectile
   - ToDestroy
   - Door
+  - Enemy
+  - Enemy Projectile
   layers:
   - Default
   - TransparentFX
