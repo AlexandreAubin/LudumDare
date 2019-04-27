@@ -78,6 +78,7 @@ public class enemyController : MonoBehaviour
         GameObject bulletGO = Instantiate(bulletPrefab, transform);
         Bullet bullet = bulletGO.GetComponent<Bullet>();
         bullet.SetPosition(new Vector2Int((int)transform.position.x, (int)transform.position.y));
-        bullet.SetDirection((int)player.transform.position.x, (int)player.transform.position.y);
+        bullet.SetDirection((int)(player.transform.position.x - transform.position.x),
+                            (int)(player.transform.position.y - transform.position.y));
     }
 }
