@@ -20,6 +20,7 @@ public class enemyController : MonoBehaviour
     private int randomDestination;
     private bool isPlayerInRange = false;
     private NavMeshAgent2D nav;
+    private Transform[] fixedDestinations;
 
     // Initiates all variables.
     void Start()
@@ -27,6 +28,17 @@ public class enemyController : MonoBehaviour
         randomDestination = Random.Range(0, destinations.childCount);
         //surface.BuildNavMesh();
         nav = GetComponent<NavMeshAgent2D>();
+        fixedDestinations = new Transform[destinations.childCount];
+
+        for(int i = 0; i < destinations.childCount; i++)
+        {
+            fixedDestinations[i] = destinations.GetChild(i);
+            fixedDestinations[i].position = new Vector3((fixedDestinations[i].position.x * 3) + 570,
+                                                        (fixedDestinations[i].position.y * 2) + 280, 0);
+        }
+
+        Vector3 w = Camera.main.ScreenToWorldPoint(fixedDestinations[4].position);
+        nav.destination = w;
         /*nav = GetComponent<NavMeshAgent>();
         nav.updateRotation = false;*/
         //Vector3 w = Camera.main.ScreenToWorldPoint(destinations.GetChild(randomDestination).position);
@@ -65,7 +77,7 @@ public class enemyController : MonoBehaviour
             
             randomDestination = Random.Range(0, destinations.childCount);
             print(randomDestination);
-            Vector3 w = Camera.main.ScreenToWorldPoint(destinations.GetChild(randomDestination).position);
+            Vector3 w = Camera.main.ScreenToWorldPoint(fixedDestinations[randomDestination].position);
             nav.destination = w;
         }
 
