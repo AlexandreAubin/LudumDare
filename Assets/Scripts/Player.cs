@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -8,7 +9,7 @@ public class Player : MonoBehaviour
     
     private SceneController sceneController;
 
-    Vector2Int position = Vector2Int.zero;
+    Vector2Int position;
     public Vector2 velocity = Vector2.zero;
 
     float maxrun = 1;
@@ -17,7 +18,7 @@ public class Player : MonoBehaviour
     public const int MAX_HEALTH = 30;
     public int CurrentHealth = MAX_HEALTH;
 
-    Vector2 remainder = Vector2.zero;
+    Vector2 remainder;
 
     //public GameObject bulletPrefab;
     public GameObject enemy;
@@ -31,6 +32,8 @@ public class Player : MonoBehaviour
 
     void Start()
     {
+        position =  new Vector2Int((int)Math.Round(transform.position.x), (int)Math.Round(transform.position.y));
+        remainder = new Vector2Int(0, 0);
         anim = this.GetComponent<Animator>();
         Application.targetFrameRate = 60;
         sceneController = GameObject.FindGameObjectWithTag("SceneController").GetComponent("SceneController") as SceneController;
