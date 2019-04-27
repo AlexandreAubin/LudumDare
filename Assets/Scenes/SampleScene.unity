@@ -516,12 +516,6 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
---- !u!1 &710747773 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 8787284411638439073, guid: 4ee7fde2005ed9f46922103479580835,
-    type: 3}
-  m_PrefabInstance: {fileID: 2040694162}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &738509642 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 4938338769115144954, guid: de5b72b0f7f9e054d9c22d7f9eedd968,
@@ -835,7 +829,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spawnPoints: {fileID: 1332438752}
-  enemyPrefab: {fileID: 710747773}
+  enemyPrefab1: {fileID: 8787284411638439072, guid: 4ee7fde2005ed9f46922103479580835,
+    type: 3}
+  enemyPrefab2: {fileID: 8787284411638439072, guid: 1512403e56a2d8948b88f0a7a597e259,
+    type: 3}
+  HowmanyNME: 0
+  nbrNME: 0
 --- !u!1 &1316614142
 GameObject:
   m_ObjectHideFlags: 0

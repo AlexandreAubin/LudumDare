@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 8787284411638439072}
   m_Layer: 0
   m_Name: enemy
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -120,5 +120,5 @@ MonoBehaviour:
   cadence: 3
   pointVie: 0
   targetingRange: 35
-  bulletPrefab: {fileID: 8013947066682193828, guid: 2b6e5b5369336bd41a73af64e62e5f92,
+  bulletPrefab: {fileID: 8013947066682193828, guid: 6378dad0bc054d94bb046c3d7d81d915,
     type: 3}
