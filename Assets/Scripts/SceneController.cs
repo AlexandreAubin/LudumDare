@@ -29,12 +29,12 @@ public class SceneController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 
     public bool isThereCollision(Vector2Int position,GameObject currentObject)
     {
-        bullets = GameObject.FindGameObjectsWithTag("Projectile");
+        this.bullets = GameObject.FindGameObjectsWithTag("Projectile");
 
         foreach (GameObject door in doors)
         {
@@ -51,6 +51,8 @@ public class SceneController : MonoBehaviour
                 return true;
             }
         }
+        GameObject[] bullets = GameObject.FindGameObjectsWithTag("Projectile");
+
 
         foreach (GameObject obstacle in obstacles)
         {
@@ -76,20 +78,48 @@ public class SceneController : MonoBehaviour
             Vector2Int obstacleRect = new Vector2Int((int)Math.Round(bullet.transform.localScale.x), (int)Math.Round(bullet.transform.localScale.y));
             Rect UIObstacleRect = new Rect(obstaclePoint, obstacleRect);
 
-            if (!bullet.GetComponent<Bullet>().Moving && UIobjRect.Overlaps(UIObstacleRect))
+            if (UIobjRect.Overlaps(UIObstacleRect))
             {
-                DestroyImmediate(bullet);
-                player.CurrentHealth++;
-                player.UpdateHealth();
-                return true;
+                if(!bullet.GetComponent<Bullet>().Moving)
+                {
+                    DestroyImmediate(bullet);
+                    player.CurrentHealth++;
+                    player.UpdateHealth();
+                    return true;
+                }
             }
         }
+
+
 
         return false;
     }
 
     public bool BulletsHitSomething(Vector2Int position,GameObject currentObject)
     {
+        GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
+
+        if (currentObject.CompareTag("Enemy Projectile"))
+        {
+            //The size of the current object on the UI
+            var UISize = currentObject.GetComponent<SpriteRenderer>().bounds.size;
+            Rect UIobjRect = new Rect((int)Math.Round(position.x - (UISize.x / 2)), (int)Math.Round(position.y - (UISize.y / 2)), (int)Math.Round(UISize.x), (int)Math.Round(UISize.y));
+            Vector2Int obstaclePoint = new Vector2Int((int)Math.Round(player.transform.position.x - (player.transform.localScale.x / 2)), (int)Math.Round(player.transform.position.y - (player.transform.localScale.y / 2)));
+            Vector2Int obstacleRect = new Vector2Int((int)Math.Round(player.transform.localScale.x), (int)Math.Round(player.transform.localScale.y));
+            Rect UIObstacleRect = new Rect(obstaclePoint, obstacleRect);
+
+            if (UIobjRect.Overlaps(UIObstacleRect))
+            {
+                if (currentObject.GetComponent<Bullet>().Moving)
+                {
+                    DestroyImmediate(currentObject);
+                    player.CurrentHealth--;
+                    player.UpdateHealth();
+                    return true;
+                }
+            }
+        }
+
         foreach (GameObject obstacle in obstacles)
         {
             //The size of the current object on the UI
@@ -101,9 +131,35 @@ public class SceneController : MonoBehaviour
 
             if (UIobjRect.Overlaps(UIObstacleRect))
             {
+                if (currentObject.CompareTag("Enemy Projectile"))
+                    DestroyImmediate(currentObject);
+
                 return true;
             }
         }
+
+        foreach (GameObject enemy in enemies)
+        {
+            //The size of the current object on the UI
+            var UISize = currentObject.GetComponent<SpriteRenderer>().bounds.size;
+            Rect UIobjRect = new Rect((int)Math.Round(position.x - (UISize.x / 2)), (int)Math.Round(position.y - (UISize.y / 2)), (int)Math.Round(UISize.x), (int)Math.Round(UISize.y));
+            Vector2Int obstaclePoint = new Vector2Int((int)Math.Round(enemy.transform.position.x - (enemy.transform.localScale.x / 2)), (int)Math.Round(enemy.transform.position.y - (enemy.transform.localScale.y / 2)));
+            Vector2Int obstacleRect = new Vector2Int((int)Math.Round(enemy.transform.localScale.x), (int)Math.Round(enemy.transform.localScale.y));
+            Rect UIObstacleRect = new Rect(obstaclePoint, obstacleRect);
+
+            if (UIobjRect.Overlaps(UIObstacleRect))
+            {
+                if (currentObject.CompareTag("Projectile"))
+                {
+                    DestroyImmediate(currentObject);
+                    DestroyImmediate(enemy);
+                    return true;
+                }
+            }
+        }
+
+
+
 
         //TODO ADD COLLISION WITH THE ENNEMIES
 
@@ -118,5 +174,5 @@ public class SceneController : MonoBehaviour
         bullet.SetDirection(facing_x, facing_y);
     }
 
-    
+
 }

@@ -9,7 +9,6 @@ TagManager:
   - Health
   - Projectile
   - ToDestroy
-  - Door
   - Enemy
   - Enemy Projectile
   layers:

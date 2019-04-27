@@ -78,7 +78,7 @@ public class enemyController : MonoBehaviour
     // Spanws a magic pickup.
      private void InstantiateEnemyFire()
      {
-        GameObject bulletGO = Instantiate(bulletPrefab, transform);
+        GameObject bulletGO = Instantiate(bulletPrefab, transform.position, Quaternion.identity);
         Bullet bullet = bulletGO.GetComponent<Bullet>();
         bullet.SetPosition(new Vector2Int((int)transform.position.x, (int)transform.position.y));
         bullet.SetDirection((int)(player.transform.position.x - transform.position.x),
