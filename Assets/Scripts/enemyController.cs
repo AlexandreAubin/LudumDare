@@ -15,6 +15,7 @@ public class enemyController : MonoBehaviour
     public int cadence;
     public int pointVie;
     public int targetingRange;
+    public GameObject bulletPrefab;
     //public typeTire;
     //private NavMeshAgent nav;                   //Keeps the nav Mesh agent in memory to allow Mr. Bad Guy to move.
     private int randomDestination;
@@ -39,7 +40,7 @@ public class enemyController : MonoBehaviour
         Vector3 w = Camera.main.ScreenToWorldPoint(fixedDestinations[randomDestination].position);
         nav.destination = w;
 
-        // InvokeRepeating("InstantiateEnemyFire", cadence, cadence); //Make the enemy shoot
+        InvokeRepeating("InstantiateEnemyFire", cadence, cadence); //Make the enemy shoot
     }
 
     // Update Mr. Bad Guy's destination.
@@ -72,9 +73,11 @@ public class enemyController : MonoBehaviour
     }
 
     // Spanws a magic pickup.
-    /* private void InstantiateEnemyFire()
+     private void InstantiateEnemyFire()
      {
-         GameObject mpu = Instantiate(projectile, transform.position, Quaternion.identity);
-         mpu.transform.Translate(Vector3.forward * 3.0f * Time.deltaTime);
-     }*/
+        GameObject bulletGO = Instantiate(bulletPrefab, transform);
+        Bullet bullet = bulletGO.GetComponent<Bullet>();
+        bullet.SetPosition(new Vector2Int((int)transform.position.x, (int)transform.position.y));
+        bullet.SetDirection((int)player.transform.position.x, (int)player.transform.position.y);
+    }
 }

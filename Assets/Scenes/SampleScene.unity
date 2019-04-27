@@ -395,9 +395,11 @@ MonoBehaviour:
   destinations: {fileID: 357400754}
   player: {fileID: 713734011}
   vitesseMouvement: 10
-  cadence: 0
+  cadence: 3
   pointVie: 0
   targetingRange: 35
+  bulletPrefab: {fileID: 8013947066682193828, guid: 2b6e5b5369336bd41a73af64e62e5f92,
+    type: 3}
 --- !u!114 &490935047
 MonoBehaviour:
   m_ObjectHideFlags: 0
