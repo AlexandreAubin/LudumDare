@@ -13,11 +13,14 @@ public class Player : MonoBehaviour
 
     Vector2 remainder = Vector2.zero;
 
-    GameObject bullet;
+    public GameObject bulletPrefab;
+
+    int facing_x = 1;
+    int facing_y = 0;
 
     void Start()
     {
-        //transform = GetComponent<Transform>();
+        Application.targetFrameRate = 60;
     }
 
     float Approach(float value, float target, float amount)
@@ -40,18 +43,76 @@ public class Player : MonoBehaviour
             h_input--;
         if (Input.GetKey(KeyCode.RightArrow))
             h_input++;
-        float fire = Input.GetAxis("Fire1");
-        Vector3 mouse = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        bool fire = Input.GetMouseButtonDown(0);
+        Vector3 mousev3 = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        Vector2 mouse = new Vector2(mousev3.x, mousev3.y);
 
-        Vector3 mouseDirection = mouse - transform.position;
-        float mouseAngle = Vector3.Angle(mouseDirection, transform.forward);
+        Vector3 mouseDirection = mouse - position;
+        //float mouseAngle = Vector3.SignedAngle(Vector3.right, mouseDirection, Vector3.up);
+
+        if (Vector2.Angle(mouseDirection, Vector2.right) <= 22.5)
+        {
+            facing_x = 1;
+            facing_y = 0;
+        }
+        if (Vector2.Angle(mouseDirection, Vector2.right + Vector2.up) <= 22.5)
+        {
+            facing_x = 1;
+            facing_y = 1;
+        }
+        if (Vector2.Angle(mouseDirection, Vector2.up) <= 22.5)
+        {
+            facing_x = 0;
+            facing_y = 1;
+        }
+        if (Vector2.Angle(mouseDirection, Vector2.left + Vector2.up) <= 22.5)
+        {
+            facing_x = -1;
+            facing_y = 1;
+        }
+        if (Vector2.Angle(mouseDirection, Vector2.left) <= 22.5)
+        {
+            facing_x = -1;
+            facing_y = 0;
+        }
+        if (Vector2.Angle(mouseDirection, Vector2.right + Vector2.down) <= 22.5)
+        {
+            facing_x = 1;
+            facing_y = -1;
+        }
+        if (Vector2.Angle(mouseDirection, Vector2.down) <= 22.5)
+        {
+            facing_x = 0;
+            facing_y = -1;
+        }
+        if (Vector2.Angle(mouseDirection, Vector2.left + Vector2.down) <= 22.5)
+        {
+            facing_x = -1;
+            facing_y = -1;
+        }
+
+        if (fire)
+        {
+            SpawnBullet();
+        }
 
         velocity.x = Approach(velocity.x, h_input * maxrun, acceleration);
         velocity.y = Approach(velocity.y, v_input * maxrun, acceleration);
+
         MoveX(velocity.x);
         MoveY(velocity.y);
+
         transform.position = new Vector3(position.x, position.y);
 
+    }
+
+    void SpawnBullet()
+    {
+        GameObject bulletGO = Instantiate(bulletPrefab, transform);
+        Bullet bullet = bulletGO.GetComponent<Bullet>();
+        bullet.SetPosition(position);
+        bullet.SetDirection(facing_x, facing_y);
+        
     }
 
     void MoveX(float amount)
