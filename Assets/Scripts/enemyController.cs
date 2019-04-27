@@ -10,7 +10,7 @@ public class enemyController : MonoBehaviour
     public Transform destinations;              //Keeps all the possible destinations in memory.
     //public Transform spanwPoints;
     //public NavMeshSurface surface;              //Allows to dynamicly bake the nav mesh.
-    //public GameObject player;
+    public GameObject player;
     public int vitesseMouvement;
     public int cadence;
     public int pointVie;
@@ -26,7 +26,6 @@ public class enemyController : MonoBehaviour
     void Start()
     {
         randomDestination = Random.Range(0, destinations.childCount);
-        //surface.BuildNavMesh();
         nav = GetComponent<NavMeshAgent2D>();
         fixedDestinations = new Transform[destinations.childCount];
 
@@ -37,40 +36,30 @@ public class enemyController : MonoBehaviour
                                                         (fixedDestinations[i].position.y * 2) + 280, 0);
         }
 
-        Vector3 w = Camera.main.ScreenToWorldPoint(fixedDestinations[4].position);
+        Vector3 w = Camera.main.ScreenToWorldPoint(fixedDestinations[randomDestination].position);
         nav.destination = w;
-        /*nav = GetComponent<NavMeshAgent>();
-        nav.updateRotation = false;*/
-        //Vector3 w = Camera.main.ScreenToWorldPoint(destinations.GetChild(randomDestination).position);
-        //nav.destination = w;
+
         // InvokeRepeating("InstantiateEnemyFire", cadence, cadence); //Make the enemy shoot
     }
 
     // Update Mr. Bad Guy's destination.
     void Update()
     {
-        //nav.stoppingDistance = 0;
-        /* int positionPlayer = (int)(Mathf.Sqrt((Mathf.Pow(player.transform.position.x, 2) +
-                                                Mathf.Pow(player.transform.position.y, 2))));
-         int positionEnemy = (int)(Mathf.Sqrt((Mathf.Pow(transform.position.x, 2) +
-                                               Mathf.Pow(transform.position.y, 2))));
-
-         if (positionPlayer - positionEnemy >= targetingRange)
-         {
-             isPlayerInRange = true;
-             nav.SetDestination(player.transform.position);
-         }
-         else
-         {
-             isPlayerInRange = false;
-         }*/
-
-        /*if (Input.GetMouseButton(0))
+        if (Vector3.Distance(player.transform.position, transform.position) <= targetingRange)
         {
-            Vector3 w = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-            GetComponent<NavMeshAgent2D>().destination = w;
-            print(Input.mousePosition);
-        }*/
+            isPlayerInRange = true;
+            nav.SetDestination(player.transform.position);
+            print("yes");
+        }
+        else if(isPlayerInRange)
+        {
+            isPlayerInRange = false;
+
+            randomDestination = Random.Range(0, destinations.childCount);
+            Vector3 w = Camera.main.ScreenToWorldPoint(fixedDestinations[randomDestination].position);
+            nav.destination = w;
+            print("enemy gave up");
+        }
 
         if (nav.remainingDistance <= 1 && !isPlayerInRange)
         {
@@ -80,14 +69,12 @@ public class enemyController : MonoBehaviour
             Vector3 w = Camera.main.ScreenToWorldPoint(fixedDestinations[randomDestination].position);
             nav.destination = w;
         }
-
-        //print(destinations.GetChild(0).position);
     }
 
     // Spanws a magic pickup.
-   /* private void InstantiateEnemyFire()
-    {
-        GameObject mpu = Instantiate(projectile, transform.position, Quaternion.identity);
-        mpu.transform.Translate(Vector3.forward * 3.0f * Time.deltaTime);
-    }*/
+    /* private void InstantiateEnemyFire()
+     {
+         GameObject mpu = Instantiate(projectile, transform.position, Quaternion.identity);
+         mpu.transform.Translate(Vector3.forward * 3.0f * Time.deltaTime);
+     }*/
 }

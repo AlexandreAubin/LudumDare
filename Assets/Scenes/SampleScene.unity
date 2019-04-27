@@ -311,6 +311,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: enemy
       objectReference: {fileID: 0}
+    - target: {fileID: 215012945360975747, guid: 03b58eb7a7b29a948a882f2c7e3e3ac5,
+        type: 3}
+      propertyPath: m_TagString
+      value: Untagged
+      objectReference: {fileID: 0}
     - target: {fileID: 215012945360975749, guid: 03b58eb7a7b29a948a882f2c7e3e3ac5,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -388,10 +393,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   destinations: {fileID: 357400754}
+  player: {fileID: 713734011}
   vitesseMouvement: 10
   cadence: 0
   pointVie: 0
-  targetingRange: 0
+  targetingRange: 35
 --- !u!114 &490935047
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -409,9 +415,9 @@ MonoBehaviour:
   _acceleration: 25
   _stoppingDistance: 0
   _autoBraking: 1
-  _radius: 1
+  _radius: 15
   _quality: 0
-  _priority: 100
+  _priority: 1
   _autoRepath: 1
 --- !u!1 &547452284 stripped
 GameObject:
@@ -461,6 +467,12 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!1 &713734011 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 215012945360975747, guid: 03b58eb7a7b29a948a882f2c7e3e3ac5,
+    type: 3}
+  m_PrefabInstance: {fileID: 215012943410429416}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &738509642 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 4938338769115144954, guid: de5b72b0f7f9e054d9c22d7f9eedd968,
