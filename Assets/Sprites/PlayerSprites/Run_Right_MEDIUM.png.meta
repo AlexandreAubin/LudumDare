@@ -1,7 +1,25 @@
 fileFormatVersion: 2
 guid: 36e5e79070b349941bdd689bcc49275d
 TextureImporter:
-  internalIDToNameTable: []
+  internalIDToNameTable:
+  - first:
+      213: -6927451150340894760
+    second: Run_Right_MEDIUM_0
+  - first:
+      213: -784692406577272533
+    second: Run_Right_MEDIUM_1
+  - first:
+      213: -6043517921809543027
+    second: Run_Right_MEDIUM_2
+  - first:
+      213: 2003689547622472600
+    second: Run_Right_MEDIUM_3
+  - first:
+      213: 1967592798483112803
+    second: Run_Right_MEDIUM_4
+  - first:
+      213: 2260095488267055078
+    second: Run_Right_MEDIUM_5
   externalObjects: {}
   serializedVersion: 10
   mipmaps:
@@ -40,12 +58,12 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 1
+  spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 100
+  spritePixelsToUnits: 64
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -69,9 +87,146 @@ TextureImporter:
     allowsAlphaSplitting: 0
     overridden: 0
     androidETC2FallbackOverride: 0
+  - serializedVersion: 2
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
   spriteSheet:
     serializedVersion: 2
-    sprites: []
+    sprites:
+    - serializedVersion: 2
+      name: Run_Right_MEDIUM_0
+      rect:
+        serializedVersion: 2
+        x: 132
+        y: 55
+        width: 557
+        height: 852
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d05301455f60c9f40827749691436293
+      internalID: -6927451150340894760
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Run_Right_MEDIUM_1
+      rect:
+        serializedVersion: 2
+        x: 802
+        y: 47
+        width: 557
+        height: 843
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0c3083d3111d64d4c9fb5625e1c09466
+      internalID: -784692406577272533
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Run_Right_MEDIUM_2
+      rect:
+        serializedVersion: 2
+        x: 1461
+        y: 36
+        width: 557
+        height: 874
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d881bc14f22c0584f962e4bb001672d8
+      internalID: -6043517921809543027
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Run_Right_MEDIUM_3
+      rect:
+        serializedVersion: 2
+        x: 2203
+        y: 58
+        width: 558
+        height: 832
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 169613cf42149694eb1eb8d3effd1887
+      internalID: 2003689547622472600
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Run_Right_MEDIUM_4
+      rect:
+        serializedVersion: 2
+        x: 2956
+        y: 47
+        width: 558
+        height: 863
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0cda23222b051b24184b713c4dd4e3b5
+      internalID: 1967592798483112803
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Run_Right_MEDIUM_5
+      rect:
+        serializedVersion: 2
+        x: 3681
+        y: 36
+        width: 557
+        height: 854
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 262764cd6b56b3546a8d568553ae059c
+      internalID: 2260095488267055078
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []

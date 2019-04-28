@@ -93,8 +93,8 @@ TextureImporter:
       name: Idle_MEDIUM_0
       rect:
         serializedVersion: 2
-        x: 16
-        y: 16
+        x: 17
+        y: 12
         width: 150
         height: 235
       alignment: 0
@@ -114,8 +114,8 @@ TextureImporter:
       name: Idle_MEDIUM_1
       rect:
         serializedVersion: 2
-        x: 185
-        y: 16
+        x: 187
+        y: 9
         width: 150
         height: 235
       alignment: 0

@@ -1,7 +1,25 @@
 fileFormatVersion: 2
 guid: cc1327da0f7b9df4d85b5922bb124388
 TextureImporter:
-  internalIDToNameTable: []
+  internalIDToNameTable:
+  - first:
+      213: -4769644740637400064
+    second: Run_Right_SMALL_0
+  - first:
+      213: 197919094492885505
+    second: Run_Right_SMALL_1
+  - first:
+      213: -2979643138441198962
+    second: Run_Right_SMALL_2
+  - first:
+      213: 4555688072710973211
+    second: Run_Right_SMALL_3
+  - first:
+      213: 155680885666843404
+    second: Run_Right_SMALL_4
+  - first:
+      213: 8407207606757136292
+    second: Run_Right_SMALL_5
   externalObjects: {}
   serializedVersion: 10
   mipmaps:
@@ -40,12 +58,12 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 1
+  spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 100
+  spritePixelsToUnits: 64
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -69,9 +87,146 @@ TextureImporter:
     allowsAlphaSplitting: 0
     overridden: 0
     androidETC2FallbackOverride: 0
+  - serializedVersion: 2
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
   spriteSheet:
     serializedVersion: 2
-    sprites: []
+    sprites:
+    - serializedVersion: 2
+      name: Run_Right_SMALL_0
+      rect:
+        serializedVersion: 2
+        x: 132
+        y: 58
+        width: 557
+        height: 754
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7088c7c964aa76244958bdfeb57d521c
+      internalID: -4769644740637400064
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Run_Right_SMALL_1
+      rect:
+        serializedVersion: 2
+        x: 802
+        y: 47
+        width: 557
+        height: 748
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 32e4ad88d0485234da1f9240817f443b
+      internalID: 197919094492885505
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Run_Right_SMALL_2
+      rect:
+        serializedVersion: 2
+        x: 1461
+        y: 36
+        width: 557
+        height: 776
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 914e98606852608468116f03f779b6ac
+      internalID: -2979643138441198962
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Run_Right_SMALL_3
+      rect:
+        serializedVersion: 2
+        x: 2203
+        y: 58
+        width: 558
+        height: 737
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3bfd7e60d2273954aa4c51525e1bdedb
+      internalID: 4555688072710973211
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Run_Right_SMALL_4
+      rect:
+        serializedVersion: 2
+        x: 2959
+        y: 50
+        width: 558
+        height: 765
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: dec2906de8087ff4992d97ba18264f24
+      internalID: 155680885666843404
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Run_Right_SMALL_5
+      rect:
+        serializedVersion: 2
+        x: 3681
+        y: 36
+        width: 557
+        height: 759
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4ac30a37d3c03bb419a97f2a99d2949e
+      internalID: 8407207606757136292
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []

@@ -47,8 +47,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   velocity: {x: 0, y: 0}
   CurrentHealth: 30
-  bulletPrefab: {fileID: 8013947066682193828, guid: 2b6e5b5369336bd41a73af64e62e5f92,
-    type: 3}
   enemy: {fileID: 0}
   SpawnPoints: {fileID: 0}
 --- !u!212 &6045895456825207089
@@ -94,7 +92,7 @@ SpriteRenderer:
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 11.09375, y: 18.6875}
+  m_Size: {x: 9.375, y: 16.25}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1

@@ -93,8 +93,8 @@ TextureImporter:
       name: Idle_SMALL_0
       rect:
         serializedVersion: 2
-        x: 15
-        y: 24
+        x: 5
+        y: 7
         width: 150
         height: 215
       alignment: 0
@@ -114,8 +114,8 @@ TextureImporter:
       name: Idle_SMALL_1
       rect:
         serializedVersion: 2
-        x: 188
-        y: 25
+        x: 175
+        y: 5
         width: 150
         height: 215
       alignment: 0

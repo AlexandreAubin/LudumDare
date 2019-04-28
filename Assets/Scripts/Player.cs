@@ -127,6 +127,7 @@ public class Player : MonoBehaviour
         transform.position = new Vector3(position.x, position.y);
 
         anim.SetInteger("YSpeed", v_input);
+        anim.SetInteger("XSpeed", h_input);
         anim.SetInteger("Health", CurrentHealth);
 
 
