@@ -44,7 +44,7 @@ public class Bullet : MonoBehaviour
 
     }
 
-    public void SetDirection(int x, int y)
+    public void SetDirection(float x, float y)
     {
         if(Moving)
         {

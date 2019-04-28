@@ -123,6 +123,8 @@ MonoBehaviour:
   targetingRange: 100
   bulletPrefab: {fileID: 8013947066682193828, guid: b1daa4850bd98a048934bf43e26769fb,
     type: 3}
+  bulletPrefabAmmo: {fileID: 8013947066682193828, guid: 2b6e5b5369336bd41a73af64e62e5f92,
+    type: 3}
   typeNME: buff
 --- !u!95 &2204676569869128319
 Animator:

@@ -207,7 +207,7 @@ public class SceneController : MonoBehaviour
         return false;
     }
 
-    public void SpawnBullet(Transform transform, Vector2Int position, int facing_x, int facing_y)
+    public void SpawnBullet(Transform transform, Vector2Int position, float facing_x, float facing_y)
     {
         GameObject bulletGO = Instantiate(bulletPrefab, transform.position, Quaternion.identity);
         Bullet bullet = bulletGO.GetComponent<Bullet>();
