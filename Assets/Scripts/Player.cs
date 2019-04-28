@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Threading;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class Player : MonoBehaviour
@@ -30,6 +32,8 @@ public class Player : MonoBehaviour
     private Animator anim;
     private Text healthBar;
 
+    private bool isDying = false;
+
     void Start()
     {
         position =  new Vector2Int((int)Math.Round(transform.position.x), (int)Math.Round(transform.position.y));
@@ -50,6 +54,11 @@ public class Player : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if(isDying)
+        {
+            return;
+        }
+
         int h_input = 0;
         int v_input = 0;
         if (Input.GetKey(KeyCode.UpArrow) || Input.GetKey(KeyCode.W))
@@ -201,6 +210,23 @@ public class Player : MonoBehaviour
     public void UpdateHealth()
     {
         healthBar.text = "Health : " + CurrentHealth + "/" + MAX_HEALTH;
+        if(CurrentHealth == 0)
+        {
+            DIE();
+        }
+    }
+
+    public void DIE()
+    {
+        isDying = true;
+        anim.Play("Death");
+        Invoke("ReloadScene", 4f);
+
+    }
+
+    private void ReloadScene()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 
     private void OnCollisionEnter2D(Collision2D collision)

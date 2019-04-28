@@ -115,6 +115,7 @@ public class SceneController : MonoBehaviour
                     DestroyImmediate(currentObject);
                     player.CurrentHealth--;
                     player.UpdateHealth();
+
                     return true;
                 }
             }
