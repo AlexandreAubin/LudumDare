@@ -17,7 +17,7 @@ public class Player : MonoBehaviour
     float maxrun = 1;
     float acceleration = 0.6f;
 
-    public const int MAX_HEALTH = 30;
+    public const int MAX_HEALTH = 15;
     public int CurrentHealth = MAX_HEALTH;
 
     Vector2 remainder;
@@ -211,6 +211,16 @@ public class Player : MonoBehaviour
         return 0;
     }
 
+    public void TakeDamage(int dmg)
+    {
+        if (!isDying)
+        {
+            CurrentHealth -= dmg;
+            UpdateHealth();
+            MusicManager.GetMusicManager().PlaySound("OUF_Player");
+        }
+    }
+
     public void UpdateHealth()
     {
         healthBar.text = "Health : " + CurrentHealth + "/" + MAX_HEALTH;
@@ -245,5 +255,10 @@ public class Player : MonoBehaviour
             CurrentHealth--;
             UpdateHealth();
         }
+    }
+
+    public bool getIsDying()
+    {
+        return isDying;
     }
 }

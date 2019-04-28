@@ -126,7 +126,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   velocity: {x: 0, y: 0}
-  CurrentHealth: 30
+  CurrentHealth: 15
   enemy: {fileID: 0}
   SpawnPoints: {fileID: 0}
   musicManager: {fileID: 0}
