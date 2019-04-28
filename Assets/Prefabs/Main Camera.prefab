@@ -99,10 +99,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   spawnPoints: {fileID: 0}
   wayPoints: {fileID: 0}
-  enemyPrefab1: {fileID: 8787284411638439072, guid: 8a808cec4465d8047a9cecb335d27ad4,
-    type: 3}
-  enemyPrefab2: {fileID: 4567462325365931309, guid: c2b8490d6aa09bd4790c7bf5a013ed71,
-    type: 3}
+  enemyPrefab1: {fileID: 0}
+  enemyPrefab2: {fileID: 0}
   HowmanyNME: 4
   nbrNME: 0
   nbrWaveMax: 1
@@ -187,7 +185,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'Health : 30/30'
+  m_Text: 'Health : 15/15'
 --- !u!1 &6059607834609634312
 GameObject:
   m_ObjectHideFlags: 0
