@@ -5322,26 +5322,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 5084626376616424958, guid: 41672c3847aa84946ba19a95495efece,
-        type: 3}
-      propertyPath: m_ClearFlags
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 5084626376616424958, guid: 41672c3847aa84946ba19a95495efece,
-        type: 3}
-      propertyPath: m_BackGroundColor.r
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5084626376616424958, guid: 41672c3847aa84946ba19a95495efece,
-        type: 3}
-      propertyPath: m_BackGroundColor.g
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5084626376616424958, guid: 41672c3847aa84946ba19a95495efece,
-        type: 3}
-      propertyPath: m_BackGroundColor.b
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 6059607832809481765, guid: 41672c3847aa84946ba19a95495efece,
         type: 3}
       propertyPath: spawnPoints
@@ -5357,12 +5337,6 @@ PrefabInstance:
       propertyPath: exitDoor
       value: 
       objectReference: {fileID: 448481898}
-    - target: {fileID: 6059607832809481765, guid: 41672c3847aa84946ba19a95495efece,
-        type: 3}
-      propertyPath: enemyPrefab1
-      value: 
-      objectReference: {fileID: 8787284411638439072, guid: 8a808cec4465d8047a9cecb335d27ad4,
-        type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 41672c3847aa84946ba19a95495efece, type: 3}
 --- !u!1001 &7431853107231538959

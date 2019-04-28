@@ -155,11 +155,13 @@ public class SceneController : MonoBehaviour
 
         foreach (GameObject enemy in enemies)
         {
+            SpriteRenderer sprite = enemy.GetComponent<SpriteRenderer>();
+
             //The size of the current object on the UI
             var UISize = currentObject.GetComponent<SpriteRenderer>().bounds.size;
             Rect UIobjRect = new Rect((int)Math.Round(position.x - (UISize.x / 2)), (int)Math.Round(position.y - (UISize.y / 2)), (int)Math.Round(UISize.x), (int)Math.Round(UISize.y));
-            Vector2Int obstaclePoint = new Vector2Int((int)Math.Round(enemy.transform.position.x - (enemy.transform.localScale.x / 2)), (int)Math.Round(enemy.transform.position.y - (enemy.transform.localScale.y / 2)));
-            Vector2Int obstacleRect = new Vector2Int((int)Math.Round(enemy.transform.localScale.x), (int)Math.Round(enemy.transform.localScale.y));
+            Vector2Int obstaclePoint = new Vector2Int((int)Math.Round(enemy.transform.position.x - (sprite.size.x * enemy.transform.localScale.x / 2)), (int)Math.Round(enemy.transform.position.y - (sprite.size.y * enemy.transform.localScale.y / 2)));
+            Vector2Int obstacleRect = new Vector2Int((int)Math.Round(sprite.size.x * enemy.transform.localScale.x), (int)Math.Round((sprite.size.y * enemy.transform.localScale.y)));
             Rect UIObstacleRect = new Rect(obstaclePoint, obstacleRect);
 
             if (UIobjRect.Overlaps(UIObstacleRect))
