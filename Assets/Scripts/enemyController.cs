@@ -66,7 +66,6 @@ public class enemyController : MonoBehaviour
                 {
                     isPlayerInRange = true;
                     nav.SetDestination(player.transform.position);
-                    print("yes");
                     if (!isShooting)
                     {
                         isShooting = true;
@@ -80,7 +79,6 @@ public class enemyController : MonoBehaviour
                     randomDestination = UnityEngine.Random.Range(0, destinations.childCount);
                     Vector3 w = Camera.main.ScreenToWorldPoint(fixedDestinations[randomDestination].position);
                     nav.destination = w;
-                    print("enemy gave up");
                     isShooting = false;
                     CancelInvoke("InstantiateEnemyFire");
                 }
@@ -91,7 +89,6 @@ public class enemyController : MonoBehaviour
                     print(randomDestination);
                     Vector3 w = Camera.main.ScreenToWorldPoint(fixedDestinations[randomDestination].position);
                     nav.destination = w;
-                    print("dest: " + nav.destination);
                 }
             }
             else
@@ -112,8 +109,6 @@ public class enemyController : MonoBehaviour
                         nav.speed = kamikazeSpeed;
                         nav.acceleration = kamikazeAcc;
                     }
-                    
-                    print("yes");
                 }
 
                 if (isLock && timerChase.ElapsedMilliseconds > cadence * 1000)
@@ -132,7 +127,6 @@ public class enemyController : MonoBehaviour
                     print(randomDestination);
                     Vector3 w = Camera.main.ScreenToWorldPoint(fixedDestinations[randomDestination].position);
                     nav.destination = w;
-                    print("dest: " + nav.destination);
                 }
             }
             else

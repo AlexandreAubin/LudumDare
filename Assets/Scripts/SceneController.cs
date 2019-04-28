@@ -134,16 +134,7 @@ public class SceneController : MonoBehaviour
                 if (currentObject.GetComponent<Bullet>().Moving)
                 {
                     DestroyImmediate(currentObject);
-                    player.CurrentHealth--;
-                    player.UpdateHealth();
-                    if(player.CurrentHealth != 0)
-                    {
-                        MusicManager.GetMusicManager().PlaySound("OUF_Player");
-                    }
-                    else
-                    {
-                        //TODO play death sound
-                    }
+                    player.TakeDamage(1);
 
                     return true;
                 }
