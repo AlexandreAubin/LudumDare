@@ -17,7 +17,7 @@ public class Player : MonoBehaviour
     float maxrun = 1;
     float acceleration = 0.6f;
 
-    public const int MAX_HEALTH = 30;
+    public const int MAX_HEALTH = 15;
     public int CurrentHealth = MAX_HEALTH;
 
     Vector2 remainder;
