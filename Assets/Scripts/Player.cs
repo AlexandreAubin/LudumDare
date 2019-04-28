@@ -212,7 +212,7 @@ public class Player : MonoBehaviour
     public void UpdateHealth()
     {
         healthBar.text = "Health : " + CurrentHealth + "/" + MAX_HEALTH;
-        if(CurrentHealth == 0)
+        if(CurrentHealth <= 0)
         {
             DIE();
         }

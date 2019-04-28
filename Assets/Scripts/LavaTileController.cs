@@ -40,6 +40,8 @@ public class LavaTileController : MonoBehaviour
                 if (timeLeft <= 0)
                 {
                     player.CurrentHealth -= 3;
+                    player.UpdateHealth();
+                    MusicManager.GetMusicManager().PlaySound("OUF_Player");
                     timeLeft = 1;
                 }
             }
