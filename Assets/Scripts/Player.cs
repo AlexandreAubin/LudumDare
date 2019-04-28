@@ -146,7 +146,9 @@ public class Player : MonoBehaviour
 
     void SpawnBullet()
     {
-        sceneController.SpawnBullet(transform,new Vector2Int(position.x,position.y), facing_x, facing_y);
+        Vector3 mousev3 = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+
+        sceneController.SpawnBullet(transform,new Vector2Int(position.x,position.y), mousev3.x - position.x, mousev3.y -position.y);
     }
 
     void MoveX(float amount)
