@@ -11,6 +11,8 @@ TagManager:
   - ToDestroy
   - Enemy
   - Enemy Projectile
+  - Door
+  - kamikaze
   layers:
   - Default
   - TransparentFX
