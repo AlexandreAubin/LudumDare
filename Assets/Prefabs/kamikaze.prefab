@@ -13,8 +13,8 @@ GameObject:
   - component: {fileID: 8787284411638439075}
   - component: {fileID: 8787284411638439072}
   m_Layer: 0
-  m_Name: enemy 1
-  m_TagString: Untagged
+  m_Name: kamikaze
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -93,7 +93,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ad705bba33f3642f4bc26cd844e12c6c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _speed: 25
+  _speed: 40
   _angularSpeed: 500
   _acceleration: 25
   _stoppingDistance: 0
@@ -114,11 +114,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0c7fab01fd2b5da47bbed6baddb90749, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  destinations: {fileID: 4059634818778624809, guid: 989a15c3b5b7d31468a8c8f974336197,
-    type: 3}
-  player: {fileID: 6767898695928356225, guid: a6589e591a647ae48a69edc6c00974f0, type: 3}
+  destinations: {fileID: 0}
+  player: {fileID: 0}
   cadence: 3
-  pointVie: 0
+  pointVie: 3
   targetingRange: 35
-  bulletPrefab: {fileID: 8013947066682193828, guid: 2b6e5b5369336bd41a73af64e62e5f92,
+  bulletPrefab: {fileID: 8013947066682193828, guid: 6378dad0bc054d94bb046c3d7d81d915,
     type: 3}
