@@ -14,6 +14,7 @@ TagManager:
   - Door
   - kamikaze
   - lava
+  - Hole
   layers:
   - Default
   - TransparentFX
