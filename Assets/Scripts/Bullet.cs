@@ -28,9 +28,13 @@ public class Bullet : MonoBehaviour
         }
         else
         {
-            anim.SetBool("isMoving", false);
-            Moving = false;
-            velocity = new Vector2(0, 0);
+            if(anim != null)
+            {
+                anim.SetBool("isMoving", false);
+                Moving = false;
+                velocity = new Vector2(0, 0);
+            }
+
         }
 
     }
