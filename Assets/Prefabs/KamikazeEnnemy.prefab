@@ -29,7 +29,7 @@ Transform:
   m_GameObject: {fileID: 4567462325365931308}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -50.405487, y: 8.2029085, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1.5, y: 1.5, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -119,13 +119,15 @@ MonoBehaviour:
   destinations: {fileID: 0}
   player: {fileID: 0}
   cadence: 3
-  pointVie: 3
-  targetingRange: 50
+  pointVie: 1
+  targetingRange: 75
   bulletPrefab: {fileID: 8013947066682193828, guid: b1daa4850bd98a048934bf43e26769fb,
     type: 3}
-  targeeet: {fileID: 8787284411638439073, guid: 159a61e3baad9934d8ecd1b64a182e59,
+  bulletPrefabAmmo: {fileID: 8013947066682193828, guid: 2b6e5b5369336bd41a73af64e62e5f92,
     type: 3}
   typeNME: kamikaze
+  kamikazeSpeed: 100
+  kamikazeAcc: 100
 --- !u!95 &5084658901487417601
 Animator:
   serializedVersion: 3
