@@ -54,7 +54,9 @@ public class SceneController : MonoBehaviour
             {
                 if (door.GetComponent<TransitionManager>().isOpen)
                 {
-                    door.GetComponent<TransitionManager>().LoadNextScene();
+                    MusicManager.GetMusicManager().PlaySound("Porte_ferme");
+                    StartCoroutine(ChangeSceneAfterClip(2, door));
+                    DestroyImmediate(GameObject.FindGameObjectWithTag("Player"));
                     return true;
                 }
             }
@@ -115,6 +117,19 @@ public class SceneController : MonoBehaviour
 
         return false;
     }
+
+    private IEnumerator ChangeSceneAfterClip(int seconds, GameObject door)
+    {
+        float pauseEndTime = Time.realtimeSinceStartup + seconds;
+
+        while (Time.realtimeSinceStartup < pauseEndTime)
+        {
+            yield return null; // Attend un frame
+        }
+
+        door.GetComponent<TransitionManager>().LoadNextScene();
+    }
+
 
     public bool BulletsHitSomething(Vector2Int position,GameObject currentObject)
     {
