@@ -11,6 +11,10 @@ public class MusicManager : MonoBehaviour
         return musicManager;
     }
 
+    public List<AudioSource> hitWallSounds;
+    private int lastPlayedHitWallSounds = 0;
+
+
     public AudioSource[] AudioSources;
 
 
@@ -26,11 +30,35 @@ public class MusicManager : MonoBehaviour
         }
     }
 
+    public void PlayHitWallSound()
+    {
+        hitWallSounds[lastPlayedHitWallSounds++].Play();
+        if(lastPlayedHitWallSounds == hitWallSounds.Count)
+        {
+            lastPlayedHitWallSounds = 0;
+        }
+    }
+
+    private void SetAudioSources()
+    {
+        musicManager.AudioSources = GetComponentsInChildren<AudioSource>();
+
+        musicManager.hitWallSounds = new List<AudioSource>();
+        foreach (var source in musicManager.AudioSources)
+        {
+            if (source.clip.name.Contains("Impact_mur"))
+            {
+                hitWallSounds.Add(source);
+            }
+        }
+    }
+
     // Start is called before the first frame update
     void Start()
     {
-        musicManager = new MusicManager();
-        musicManager.AudioSources =  GetComponentsInChildren<AudioSource>();
+        musicManager = this;
+        musicManager.SetAudioSources();
+        SetAudioSources();
     }
 
     // Update is called once per frame

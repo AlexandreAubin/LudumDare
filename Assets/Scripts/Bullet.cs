@@ -28,7 +28,12 @@ public class Bullet : MonoBehaviour
         }
         else
         {
-            if(anim != null)
+            if(Moving)
+            {
+                MusicManager.GetMusicManager().PlayHitWallSound();
+            }
+
+            if (anim != null)
             {
                 anim.SetBool("isMoving", false);
                 Moving = false;
