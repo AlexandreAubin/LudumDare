@@ -222,7 +222,10 @@ public class Player : MonoBehaviour
     {
         isDying = true;
         anim.Play("Death");
-        Invoke("ReloadScene", 4f);
+        MusicManager.GetMusicManager().PlaySound("SPOOKY_DEATH");
+        var music = MusicManager.GetMusicManager().gameObject.GetComponent<AudioSource>();
+        music.Stop();
+        Invoke("ReloadScene", 6f);
 
     }
 

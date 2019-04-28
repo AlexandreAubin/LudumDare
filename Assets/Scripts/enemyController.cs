@@ -1,5 +1,7 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
+using System.Diagnostics;
 using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.UI;
@@ -9,22 +11,34 @@ public class enemyController : MonoBehaviour
     //public GameObject projectile;
     public Transform destinations;              //Keeps all the possible destinations in memory.
     public GameObject player;
-    public int cadence;
+    public float cadence;
     public int pointVie;
     public int targetingRange;
     public GameObject bulletPrefab;
+    public GameObject bulletPrefabAmmo;
     public string typeNME;
+    public float kamikazeSpeed;
+    public float kamikazeAcc;
     //public typeTire;
     private int randomDestination;
     private bool isPlayerInRange = false;
     private bool destinationSet = false;
     private NavMeshAgent2D nav;
     private Transform[] fixedDestinations;
+    private bool isShooting;
+    private bool isLock;
+    private Transform targetKamikaze;
+    private SceneController sceneController;
+    Stopwatch timer = new Stopwatch();
 
     // Initiates all variables.
     void Start()
     {
-        randomDestination = Random.Range(0, destinations.childCount);
+        targetKamikaze = player.transform;
+        sceneController = GameObject.FindGameObjectWithTag("SceneController").GetComponent("SceneController") as SceneController;
+        isLock = false;
+        isShooting = false;
+        randomDestination = UnityEngine.Random.Range(0, destinations.childCount);
         nav = GetComponent<NavMeshAgent2D>();
         fixedDestinations = new Transform[destinations.childCount];
 
@@ -38,42 +52,91 @@ public class enemyController : MonoBehaviour
         Vector3 w = Camera.main.ScreenToWorldPoint(fixedDestinations[randomDestination].position);
         nav.destination = w;
         destinationSet = true;
-
-        InvokeRepeating("InstantiateEnemyFire", cadence, cadence); //Make the enemy shoot
     }
 
     // Update Mr. Bad Guy's destination.
     void Update()
     {
-        if (!destinationSet)
+        if (typeNME == "buff")
         {
-            if (Vector3.Distance(player.transform.position, transform.position) <= targetingRange)
+            if (!destinationSet)
             {
-                isPlayerInRange = true;
-                nav.SetDestination(player.transform.position);
-                print("yes");
-            }
-            else if (isPlayerInRange)
-            {
-                isPlayerInRange = false;
+                if (Vector3.Distance(player.transform.position, transform.position) <= targetingRange)
+                {
+                    isPlayerInRange = true;
+                    nav.SetDestination(player.transform.position);
+                    print("yes");
+                    if (!isShooting)
+                    {
+                        isShooting = true;
+                        InvokeRepeating("InstantiateEnemyFire", cadence, cadence); //Make the enemy shoot
+                    }
+                }
+                else if (isPlayerInRange)
+                {
+                    isPlayerInRange = false;
 
-                randomDestination = Random.Range(0, destinations.childCount);
-                Vector3 w = Camera.main.ScreenToWorldPoint(fixedDestinations[randomDestination].position);
-                nav.destination = w;
-                print("enemy gave up");
-            }
+                    randomDestination = UnityEngine.Random.Range(0, destinations.childCount);
+                    Vector3 w = Camera.main.ScreenToWorldPoint(fixedDestinations[randomDestination].position);
+                    nav.destination = w;
+                    print("enemy gave up");
+                    isShooting = false;
+                    CancelInvoke("InstantiateEnemyFire");
+                }
 
-            if (Vector3.Distance(transform.position, nav.destination) <= 1 && !isPlayerInRange)
-            {
-                randomDestination = Random.Range(0, destinations.childCount);
-                print(randomDestination);
-                Vector3 w = Camera.main.ScreenToWorldPoint(fixedDestinations[randomDestination].position);
-                nav.destination = w;
-                print("dest: " + nav.destination);
+                if (Vector3.Distance(transform.position, nav.destination) <= 1 && !isPlayerInRange)
+                {
+                    randomDestination = UnityEngine.Random.Range(0, destinations.childCount);
+                    print(randomDestination);
+                    Vector3 w = Camera.main.ScreenToWorldPoint(fixedDestinations[randomDestination].position);
+                    nav.destination = w;
+                    print("dest: " + nav.destination);
+                }
             }
+            else
+                destinationSet = false;
         }
-        else
-            destinationSet = false;
+        else if (typeNME == "kamikaze")
+        {
+            if (!destinationSet)
+            {
+                if (Vector3.Distance(player.transform.position, transform.position) <= targetingRange)
+                {
+                    isPlayerInRange = true;
+                    nav.SetDestination(player.transform.position);
+                    if (!isLock)
+                    {
+                        timer.Start();
+                        isLock = true;
+                        nav.speed = kamikazeSpeed;
+                        nav.acceleration = kamikazeAcc;
+                    }
+                    
+                    print("yes");
+                }
+
+                if (isLock && timer.ElapsedMilliseconds > cadence * 1000)
+                {
+                    ExplosionKamikaze();
+                    Instantiate(sceneController.NMEKamikazeDead, transform.position, Quaternion.identity);
+                    GameObject boule = Instantiate(bulletPrefabAmmo, transform.position, Quaternion.identity);
+                    boule.GetComponent<Bullet>().Moving = false;
+                    DestroyImmediate(gameObject);
+                    sceneController.spawncontroller.nbrNME--;
+                }
+
+                if (!isLock && Vector3.Distance(transform.position, nav.destination) <= 1 && !isPlayerInRange)
+                {
+                    randomDestination = UnityEngine.Random.Range(0, destinations.childCount);
+                    print(randomDestination);
+                    Vector3 w = Camera.main.ScreenToWorldPoint(fixedDestinations[randomDestination].position);
+                    nav.destination = w;
+                    print("dest: " + nav.destination);
+                }
+            }
+            else
+                destinationSet = false;
+        }
     }
 
     // Spanws a magic pickup.
@@ -84,5 +147,28 @@ public class enemyController : MonoBehaviour
         bullet.SetPosition(new Vector2Int((int)transform.position.x, (int)transform.position.y));
         bullet.SetDirection((int)(player.transform.position.x - transform.position.x),
                             (int)(player.transform.position.y - transform.position.y));
+    }
+
+    private void ExplosionKamikaze()
+    {
+        GameObject bulletGOG = Instantiate(bulletPrefab, transform.position, Quaternion.identity);
+        Bullet bulletG = bulletGOG.GetComponent<Bullet>();
+        bulletG.SetPosition(new Vector2Int((int)transform.position.x, (int)transform.position.y));
+        bulletG.SetDirection(-1, 0);
+
+        GameObject bulletGOD = Instantiate(bulletPrefab, transform.position, Quaternion.identity);
+        Bullet bulletD = bulletGOD.GetComponent<Bullet>();
+        bulletD.SetPosition(new Vector2Int((int)transform.position.x, (int)transform.position.y));
+        bulletD.SetDirection(1, 0);
+
+        GameObject bulletGOH = Instantiate(bulletPrefab, transform.position, Quaternion.identity);
+        Bullet bulletH = bulletGOH.GetComponent<Bullet>();
+        bulletH.SetPosition(new Vector2Int((int)transform.position.x, (int)transform.position.y));
+        bulletH.SetDirection(0, 1);
+
+        GameObject bulletGOB = Instantiate(bulletPrefab, transform.position, Quaternion.identity);
+        Bullet bulletB = bulletGOB.GetComponent<Bullet>();
+        bulletB.SetPosition(new Vector2Int((int)transform.position.x, (int)transform.position.y));
+        bulletB.SetDirection(0, -1);
     }
 }
