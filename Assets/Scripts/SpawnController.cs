@@ -10,7 +10,9 @@ public class SpawnController : MonoBehaviour
     public enemyController enemyPrefab2;
     public int HowmanyNME;
     public int nbrNME;
+    public int nbrWaveMax;
 
+    public int nbrWave;
     private GameObject player;
 
     // Start is called before the first frame update
@@ -28,13 +30,18 @@ public class SpawnController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKey(KeyCode.P))
-        {
-            nbrNME--;
-        }
         if (nbrNME <= 0)
         {
-            SpawnNMESaiyen();
+            if (nbrWave < nbrWaveMax)
+            {
+                SpawnNMEMIX();
+                nbrWave++;
+            }
+            else
+            {
+                //OPEN DOOR
+                print("OPEN DOOR");
+            }
         }
     }
 

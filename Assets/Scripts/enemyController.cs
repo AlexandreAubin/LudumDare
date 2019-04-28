@@ -13,6 +13,7 @@ public class enemyController : MonoBehaviour
     public int pointVie;
     public int targetingRange;
     public GameObject bulletPrefab;
+    public string typeNME;
     //public typeTire;
     private int randomDestination;
     private bool isPlayerInRange = false;
