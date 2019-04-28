@@ -10,6 +10,7 @@ public class SceneController : MonoBehaviour
     public GameObject[] obstacles;
 
     public Player player;
+    public SpawnController spawncontroller;
 
     //public GameObject[] bullets;
 
@@ -134,6 +135,7 @@ public class SceneController : MonoBehaviour
                 {
                     DestroyImmediate(currentObject);
                     DestroyImmediate(enemy);
+                    spawncontroller.nbrNME--;
                     return true;
                 }
             }
