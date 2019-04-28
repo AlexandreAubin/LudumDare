@@ -211,6 +211,7 @@ public class SceneController : MonoBehaviour
                             Instantiate(NMEKamikazeDead, enemy.transform.position, Quaternion.identity);
                             GameObject boule = Instantiate(bulletPrefab, enemy.transform.position, Quaternion.identity);
                             boule.GetComponent<Bullet>().Moving = false;
+                            temp.ExplosionKamikaze();
                         }
                         DestroyImmediate(enemy);
                         spawncontroller.nbrNME--;

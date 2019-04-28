@@ -144,7 +144,7 @@ public class enemyController : MonoBehaviour
                             (int)(player.transform.position.y - transform.position.y));
     }
 
-    private void ExplosionKamikaze()
+    public void ExplosionKamikaze()
     {
         GameObject bulletGOG = Instantiate(bulletPrefab, transform.position, Quaternion.identity);
         Bullet bulletG = bulletGOG.GetComponent<Bullet>();
