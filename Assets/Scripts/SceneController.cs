@@ -11,6 +11,8 @@ public class SceneController : MonoBehaviour
 
     public Player player;
     public SpawnController spawncontroller;
+    public GameObject NMEBuffDead;
+    public GameObject NMEKamikazeDead;
 
     //public GameObject[] bullets;
 
@@ -134,8 +136,31 @@ public class SceneController : MonoBehaviour
                 if (currentObject.CompareTag("Projectile"))
                 {
                     DestroyImmediate(currentObject);
-                    DestroyImmediate(enemy);
-                    spawncontroller.nbrNME--;
+                    enemyController temp = enemy.GetComponent<enemyController>();
+                    if (temp.pointVie > 1)
+                    {
+                        temp.pointVie--;
+                    }
+                    else
+                    {
+                        if (temp.typeNME == "buff")
+                        {
+                            Instantiate(NMEBuffDead, enemy.transform.position, Quaternion.identity);
+                            for(int i = 0; i < 3; i++)
+                            {
+                                GameObject boule = Instantiate(bulletPrefab, enemy.transform.position, Quaternion.identity);
+                                boule.GetComponent<Bullet>().Moving = false;
+                            }
+                        }
+                        else if (temp.typeNME == "kamikaze")
+                        {
+                            Instantiate(NMEKamikazeDead, enemy.transform.position, Quaternion.identity);
+                            GameObject boule = Instantiate(bulletPrefab, enemy.transform.position, Quaternion.identity);
+                            boule.GetComponent<Bullet>().Moving = false;
+                        }
+                        DestroyImmediate(enemy);
+                        spawncontroller.nbrNME--;
+                    }
                     return true;
                 }
             }

@@ -93,7 +93,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ad705bba33f3642f4bc26cd844e12c6c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _speed: 40
+  _speed: 60
   _angularSpeed: 500
   _acceleration: 25
   _stoppingDistance: 0
@@ -117,7 +117,8 @@ MonoBehaviour:
   destinations: {fileID: 0}
   player: {fileID: 0}
   cadence: 3
-  pointVie: 3
-  targetingRange: 35
+  pointVie: 1
+  targetingRange: 50
   bulletPrefab: {fileID: 8013947066682193828, guid: 6378dad0bc054d94bb046c3d7d81d915,
     type: 3}
+  typeNME: kamikaze
