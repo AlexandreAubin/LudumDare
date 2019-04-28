@@ -28,9 +28,18 @@ public class Bullet : MonoBehaviour
         }
         else
         {
-            anim.SetBool("isMoving", false);
-            Moving = false;
-            velocity = new Vector2(0, 0);
+            if(Moving)
+            {
+                MusicManager.GetMusicManager().PlayHitWallSound();
+            }
+
+            if (anim != null)
+            {
+                anim.SetBool("isMoving", false);
+                Moving = false;
+                velocity = new Vector2(0, 0);
+            }
+
         }
 
     }
