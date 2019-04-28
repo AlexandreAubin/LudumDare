@@ -118,9 +118,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   destinations: {fileID: 0}
   player: {fileID: 0}
-  cadence: 1
+  cadence: 0.33
   pointVie: 3
-  targetingRange: 40
+  targetingRange: 100
   bulletPrefab: {fileID: 8013947066682193828, guid: b1daa4850bd98a048934bf43e26769fb,
     type: 3}
   typeNME: buff

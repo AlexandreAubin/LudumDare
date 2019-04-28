@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 4567462325365931309}
   - component: {fileID: 5084658901487417601}
   m_Layer: 0
-  m_Name: Kamikaze
+  m_Name: KamikazeEnnemy
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -95,7 +95,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ad705bba33f3642f4bc26cd844e12c6c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _speed: 10
+  _speed: 40
   _angularSpeed: 500
   _acceleration: 25
   _stoppingDistance: 0
@@ -118,12 +118,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   destinations: {fileID: 0}
   player: {fileID: 0}
-  cadence: 1
+  cadence: 3
   pointVie: 3
-  targetingRange: 40
+  targetingRange: 50
   bulletPrefab: {fileID: 8013947066682193828, guid: b1daa4850bd98a048934bf43e26769fb,
     type: 3}
-  typeNME: buff
+  targeeet: {fileID: 8787284411638439073, guid: 159a61e3baad9934d8ecd1b64a182e59,
+    type: 3}
+  typeNME: kamikaze
 --- !u!95 &5084658901487417601
 Animator:
   serializedVersion: 3

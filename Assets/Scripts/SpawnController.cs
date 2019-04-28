@@ -25,7 +25,7 @@ public class SpawnController : MonoBehaviour
         nbrWave = 1;
         player = GameObject.FindGameObjectWithTag("Player");
         door = GameObject.FindGameObjectWithTag("Door");
-        SpawnNMEBuff();
+        SpawnNMESaiyen();
         /*int random = Random.Range(0, spawnPoints.childCount);
         Instantiate(enemyPrefab, spawnPoints.GetChild(random).transform.position, Quaternion.identity);
 
