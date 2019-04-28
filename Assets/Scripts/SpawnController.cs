@@ -6,8 +6,8 @@ public class SpawnController : MonoBehaviour
 {
     public Transform spawnPoints;
     public Transform wayPoints;
-    public enemyController enemyPrefab1;
-    public enemyController enemyPrefab2;
+    public NME_PreSpawn enemyPrefab1;
+    public NME_PreSpawn enemyPrefab2;
     public int HowmanyNME;
     public int nbrNME;
     public int nbrWaveMax;
@@ -58,10 +58,11 @@ public class SpawnController : MonoBehaviour
         for (int i = 0; i < Random.Range(1, HowmanyNME); i++)
         {
             int random = Random.Range(0, spawnPoints.childCount);
-            enemyController temp = Instantiate(enemyPrefab1, spawnPoints.GetChild(random).transform.position, Quaternion.identity);
+            NME_PreSpawn temp = Instantiate(enemyPrefab1, spawnPoints.GetChild(random).transform.position, Quaternion.identity);
             nbrNME++;
-            temp.player = player;
-            temp.destinations = wayPoints;
+            temp.wayPoints = wayPoints;
+            //temp.player = player;
+            //temp.destinations = wayPoints;
         }
     }
 
@@ -70,10 +71,11 @@ public class SpawnController : MonoBehaviour
         for (int i = 0; i < Random.Range(1, HowmanyNME); i++)
         {
             int random = Random.Range(0, spawnPoints.childCount);
-            enemyController temp = Instantiate(enemyPrefab2, spawnPoints.GetChild(random).transform.position, Quaternion.identity);
+            NME_PreSpawn temp = Instantiate(enemyPrefab2, spawnPoints.GetChild(random).transform.position, Quaternion.identity);
             nbrNME++;
-            temp.player = player;
-            temp.destinations = wayPoints;
+            temp.wayPoints = wayPoints;
+            //temp.player = player;
+            //temp.destinations = wayPoints;
         }
     }
 
@@ -84,16 +86,18 @@ public class SpawnController : MonoBehaviour
             if (Random.Range(0,1)==0)
             {
                 int random = Random.Range(0, spawnPoints.childCount);
-                enemyController temp = Instantiate(enemyPrefab1, spawnPoints.GetChild(random).transform.position, Quaternion.identity);
-                temp.player = player;
-                temp.destinations = wayPoints;
+                NME_PreSpawn temp = Instantiate(enemyPrefab1, spawnPoints.GetChild(random).transform.position, Quaternion.identity);
+                temp.wayPoints = wayPoints;
+                //temp.player = player;
+                //temp.destinations = wayPoints;
             }
             else
             {
                 int random = Random.Range(0, spawnPoints.childCount);
-                enemyController temp = Instantiate(enemyPrefab2, spawnPoints.GetChild(random).transform.position, Quaternion.identity);
-                temp.player = player;
-                temp.destinations = wayPoints;
+                NME_PreSpawn temp = Instantiate(enemyPrefab2, spawnPoints.GetChild(random).transform.position, Quaternion.identity);
+                temp.wayPoints = wayPoints;
+                //temp.player = player;
+                //temp.destinations = wayPoints;
             }
             nbrNME++;
         }
