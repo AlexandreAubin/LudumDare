@@ -31,6 +31,7 @@ public class Player : MonoBehaviour
 
     private Animator anim;
     private Text healthBar;
+    public MusicManager musicManager;
 
     private bool isDying = false;
 
@@ -42,6 +43,7 @@ public class Player : MonoBehaviour
         Application.targetFrameRate = 60;
         sceneController = GameObject.FindGameObjectWithTag("SceneController").GetComponent("SceneController") as SceneController;
         healthBar =  GameObject.FindGameObjectWithTag("Health").GetComponent<Text>();
+        musicManager = MusicManager.GetMusicManager();
     }
 
     float Approach(float value, float target, float amount)
