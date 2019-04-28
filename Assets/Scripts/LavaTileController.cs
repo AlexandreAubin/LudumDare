@@ -35,6 +35,7 @@ public class LavaTileController : MonoBehaviour
 
             if (playerRect.Overlaps(lavaRect))
             {
+                MusicManager.GetMusicManager().PlaySound("Burn3");
                 timeLeft -= Time.deltaTime;
 
                 if (timeLeft <= 0)
