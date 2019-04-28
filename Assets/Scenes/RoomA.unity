@@ -222,6 +222,11 @@ PrefabInstance:
       propertyPath: m_StaticEditorFlags
       value: 4294967295
       objectReference: {fileID: 0}
+    - target: {fileID: 9178933962406309507, guid: 6e4813215308b9a45b6ddd983154afe9,
+        type: 3}
+      propertyPath: m_TagString
+      value: Hole
+      objectReference: {fileID: 0}
     - target: {fileID: 9178933962406309505, guid: 6e4813215308b9a45b6ddd983154afe9,
         type: 3}
       propertyPath: m_LocalPosition.x

@@ -38,6 +38,8 @@ public class SceneController : MonoBehaviour
     public bool isThereCollisionWithPlayer(Vector2Int position,GameObject currentObject)
     {
         this.bullets = GameObject.FindGameObjectsWithTag("Projectile");
+        GameObject[] bullets = GameObject.FindGameObjectsWithTag("Projectile");
+        GameObject[] holes = GameObject.FindGameObjectsWithTag("Hole");
 
         foreach (GameObject door in doors)
         {
@@ -57,9 +59,7 @@ public class SceneController : MonoBehaviour
                 }
             }
         }
-        GameObject[] bullets = GameObject.FindGameObjectsWithTag("Projectile");
-
-
+        
         foreach (GameObject obstacle in obstacles)
         {
             //The size of the current object on the UI
@@ -67,6 +67,21 @@ public class SceneController : MonoBehaviour
             Rect UIobjRect = new Rect((int)Math.Round(position.x - (UISize.x / 2)), (int)Math.Round(position.y - (UISize.y / 2)), (int)Math.Round(UISize.x), (int)Math.Round(UISize.x));
             Vector2Int obstaclePoint = new Vector2Int((int)Math.Round(obstacle.transform.position.x - (obstacle.transform.localScale.x /2)), (int)Math.Round(obstacle.transform.position.y - (obstacle.transform.localScale.y / 2)));
             Vector2Int obstacleRect = new Vector2Int((int)Math.Round(obstacle.transform.localScale.x), (int)Math.Round(obstacle.transform.localScale.y));
+            Rect UIObstacleRect = new Rect(obstaclePoint, obstacleRect);
+
+            if (UIobjRect.Overlaps(UIObstacleRect))
+            {
+                return true;
+            }
+        }
+
+        foreach (GameObject hole in holes)
+        {
+            //The size of the current object on the UI
+            var UISize = currentObject.GetComponent<SpriteRenderer>().bounds.size;
+            Rect UIobjRect = new Rect((int)Math.Round(position.x - (UISize.x / 2)), (int)Math.Round(position.y - (UISize.y / 2)), (int)Math.Round(UISize.x), (int)Math.Round(UISize.x));
+            Vector2Int obstaclePoint = new Vector2Int((int)Math.Round(hole.transform.position.x - (hole.transform.localScale.x / 2)), (int)Math.Round(hole.transform.position.y - (hole.transform.localScale.y / 2)));
+            Vector2Int obstacleRect = new Vector2Int((int)Math.Round(hole.transform.localScale.x), (int)Math.Round(hole.transform.localScale.y));
             Rect UIObstacleRect = new Rect(obstaclePoint, obstacleRect);
 
             if (UIobjRect.Overlaps(UIObstacleRect))
