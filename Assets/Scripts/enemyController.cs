@@ -29,7 +29,8 @@ public class enemyController : MonoBehaviour
     private bool isLock;
     private Transform targetKamikaze;
     private SceneController sceneController;
-    Stopwatch timer = new Stopwatch();
+    private GameObject kamikazeCorpse;
+    Stopwatch timerChase = new Stopwatch();
 
     // Initiates all variables.
     void Start()
@@ -106,7 +107,7 @@ public class enemyController : MonoBehaviour
                     nav.SetDestination(player.transform.position);
                     if (!isLock)
                     {
-                        timer.Start();
+                        timerChase.Start();
                         isLock = true;
                         nav.speed = kamikazeSpeed;
                         nav.acceleration = kamikazeAcc;
@@ -115,10 +116,10 @@ public class enemyController : MonoBehaviour
                     print("yes");
                 }
 
-                if (isLock && timer.ElapsedMilliseconds > cadence * 1000)
+                if (isLock && timerChase.ElapsedMilliseconds > cadence * 1000)
                 {
                     ExplosionKamikaze();
-                    Instantiate(sceneController.NMEKamikazeDead, transform.position, Quaternion.identity);
+                    kamikazeCorpse = Instantiate(sceneController.NMEKamikazeDead, transform.position, Quaternion.identity);
                     GameObject boule = Instantiate(bulletPrefabAmmo, transform.position, Quaternion.identity);
                     boule.GetComponent<Bullet>().Moving = false;
                     DestroyImmediate(gameObject);

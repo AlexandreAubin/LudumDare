@@ -12,9 +12,10 @@ GameObject:
   - component: {fileID: 8787284411638439074}
   - component: {fileID: 8787284411638439075}
   - component: {fileID: 8787284411638439072}
-  - component: {fileID: 4666117915218752455}
+  - component: {fileID: 2204676569869128319}
+  - component: {fileID: 9048255542774447254}
   m_Layer: 0
-  m_Name: enemy 2_dead
+  m_Name: BuffEnnemy_Spawn
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -70,14 +71,14 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 8
-  m_Sprite: {fileID: -5176205520430173927, guid: 2dc4d6a4b7b79454c9e02257478e663f,
+  m_SortingOrder: 9
+  m_Sprite: {fileID: 3949525198811505171, guid: 820772b7845703742acb351ce964495a,
     type: 3}
-  m_Color: {r: 0.7607844, g: 0.7607844, b: 0.7607844, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 12.0625, y: 13}
+  m_Size: {x: 11.456665, y: 14.790001}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -95,7 +96,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ad705bba33f3642f4bc26cd844e12c6c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _speed: 60
+  _speed: 10
   _angularSpeed: 500
   _acceleration: 25
   _stoppingDistance: 0
@@ -118,16 +119,36 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   destinations: {fileID: 0}
   player: {fileID: 0}
-  cadence: 3
-  pointVie: 1
-  targetingRange: 50
-  bulletPrefab: {fileID: 8013947066682193828, guid: 6378dad0bc054d94bb046c3d7d81d915,
+  cadence: 0.33
+  pointVie: 3
+  targetingRange: 100
+  bulletPrefab: {fileID: 8013947066682193828, guid: b1daa4850bd98a048934bf43e26769fb,
     type: 3}
-  bulletPrefabAmmo: {fileID: 0}
-  typeNME: kamikaze
+  bulletPrefabAmmo: {fileID: 8013947066682193828, guid: 2b6e5b5369336bd41a73af64e62e5f92,
+    type: 3}
+  typeNME: buff
   kamikazeSpeed: 0
   kamikazeAcc: 0
---- !u!114 &4666117915218752455
+--- !u!95 &2204676569869128319
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8787284411638439073}
+  m_Enabled: 0
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 0b74c5f001498c04d95edf535956b710, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &9048255542774447254
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -136,7 +157,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 8787284411638439073}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3e06ff7ffedb719419d5a7b201be7921, type: 3}
+  m_Script: {fileID: 11500000, guid: b49dc9240d03f654bb26c9867ba9810e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  timeDestroy: 0.5
+  wayPoints: {fileID: 0}
+  timeSpawn: 2
+  enemyPrefab1: {fileID: 8787284411638439072, guid: 8a808cec4465d8047a9cecb335d27ad4,
+    type: 3}
+  enemyPrefab2: {fileID: 4567462325365931309, guid: c2b8490d6aa09bd4790c7bf5a013ed71,
+    type: 3}
+  typeNME: buff
