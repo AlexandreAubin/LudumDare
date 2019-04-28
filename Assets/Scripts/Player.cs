@@ -119,7 +119,7 @@ public class Player : MonoBehaviour
 
         if (fire)
         {
-            if(CurrentHealth > 0)
+            if(CurrentHealth > 1)
             {
                 CurrentHealth--;
                 UpdateHealth();
