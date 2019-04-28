@@ -35,7 +35,7 @@ public class SceneController : MonoBehaviour
 
     }
 
-    public bool isThereCollision(Vector2Int position,GameObject currentObject)
+    public bool isThereCollisionWithPlayer(Vector2Int position,GameObject currentObject)
     {
         this.bullets = GameObject.FindGameObjectsWithTag("Projectile");
 
@@ -43,7 +43,7 @@ public class SceneController : MonoBehaviour
         {
             //The size of the current object on the UI
             var UISize = currentObject.GetComponent<SpriteRenderer>().bounds.size;
-            Rect UIobjRect = new Rect((int)Math.Round(position.x - (UISize.x / 2)), (int)Math.Round(position.y - (UISize.y / 2)), (int)Math.Round(UISize.x), (int)Math.Round(UISize.y));
+            Rect UIobjRect = new Rect((int)Math.Round(position.x - (UISize.x / 2)), (int)Math.Round(position.y - (UISize.y / 2)), (int)Math.Round(UISize.x), (int)Math.Round(UISize.x));
             Vector2Int obstaclePoint = new Vector2Int((int)Math.Round(door.transform.position.x - (door.transform.localScale.x / 2)), (int)Math.Round(door.transform.position.y - (door.transform.localScale.y / 2)));
             Vector2Int obstacleRect = new Vector2Int((int)Math.Round(door.transform.localScale.x), (int)Math.Round(door.transform.localScale.y));
             Rect UIObstacleRect = new Rect(obstaclePoint, obstacleRect);
@@ -64,7 +64,7 @@ public class SceneController : MonoBehaviour
         {
             //The size of the current object on the UI
             var UISize = currentObject.GetComponent<SpriteRenderer>().bounds.size;
-            Rect UIobjRect = new Rect((int)Math.Round(position.x - (UISize.x / 2)), (int)Math.Round(position.y - (UISize.y / 2)), (int)Math.Round(UISize.x), (int)Math.Round(UISize.y));
+            Rect UIobjRect = new Rect((int)Math.Round(position.x - (UISize.x / 2)), (int)Math.Round(position.y - (UISize.y / 2)), (int)Math.Round(UISize.x), (int)Math.Round(UISize.x));
             Vector2Int obstaclePoint = new Vector2Int((int)Math.Round(obstacle.transform.position.x - (obstacle.transform.localScale.x /2)), (int)Math.Round(obstacle.transform.position.y - (obstacle.transform.localScale.y / 2)));
             Vector2Int obstacleRect = new Vector2Int((int)Math.Round(obstacle.transform.localScale.x), (int)Math.Round(obstacle.transform.localScale.y));
             Rect UIObstacleRect = new Rect(obstaclePoint, obstacleRect);
@@ -79,7 +79,7 @@ public class SceneController : MonoBehaviour
         {
             //The size of the current object on the UI
             var UISize = currentObject.GetComponent<SpriteRenderer>().bounds.size;
-            Rect UIobjRect = new Rect((int)Math.Round(position.x - (UISize.x / 2)), (int)Math.Round(position.y - (UISize.y / 2)), (int)Math.Round(UISize.x), (int)Math.Round(UISize.y));
+            Rect UIobjRect = new Rect((int)Math.Round(position.x - (UISize.x / 2)), (int)Math.Round(position.y - (UISize.y / 2)), (int)Math.Round(UISize.x), (int)Math.Round(UISize.x));
             Vector2Int obstaclePoint = new Vector2Int((int)Math.Round(bullet.transform.position.x - (bullet.transform.localScale.x / 2)), (int)Math.Round(bullet.transform.position.y - (bullet.transform.localScale.y / 2)));
             Vector2Int obstacleRect = new Vector2Int((int)Math.Round(bullet.transform.localScale.x), (int)Math.Round(bullet.transform.localScale.y));
             Rect UIObstacleRect = new Rect(obstaclePoint, obstacleRect);

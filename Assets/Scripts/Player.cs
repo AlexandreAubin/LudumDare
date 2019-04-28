@@ -199,7 +199,7 @@ public class Player : MonoBehaviour
 
     bool collideAt(Vector2Int position)
     {
-        return sceneController.isThereCollision(position,this.gameObject);
+        return sceneController.isThereCollisionWithPlayer(position,this.gameObject);
     }
 
     int Sign(float amount)
