@@ -5286,6 +5286,23 @@ PrefabInstance:
       propertyPath: exitDoor
       value: 
       objectReference: {fileID: 448481898}
+    - target: {fileID: 6059607832809481765, guid: 41672c3847aa84946ba19a95495efece,
+        type: 3}
+      propertyPath: enemyPrefab1
+      value: 
+      objectReference: {fileID: 9048255542774447254, guid: 32bda64aebeb2a141908d297bb90ff5e,
+        type: 3}
+    - target: {fileID: 6059607832809481765, guid: 41672c3847aa84946ba19a95495efece,
+        type: 3}
+      propertyPath: enemyPrefab2
+      value: 
+      objectReference: {fileID: -2279225562337702584, guid: c2c37d66c3007464c8c80a57ab8e5127,
+        type: 3}
+    - target: {fileID: 6059607832809481765, guid: 41672c3847aa84946ba19a95495efece,
+        type: 3}
+      propertyPath: nbrWaveMax
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 5084626376616424705, guid: 41672c3847aa84946ba19a95495efece,
         type: 3}
       propertyPath: m_LocalPosition.x
