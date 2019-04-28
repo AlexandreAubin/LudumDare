@@ -14,29 +14,48 @@ public class SceneController : MonoBehaviour
     public GameObject NMEBuffDead;
     public GameObject NMEKamikazeDead;
 
-    //public GameObject[] bullets;
+    public GameObject[] bullets;
 
     public GameObject bulletPrefab;
+
+    public GameObject[] doors;
 
     // Start is called before the first frame update
     void Start()
     {
         obstacles = GameObject.FindGameObjectsWithTag("Obstacle");
         player = GameObject.FindGameObjectWithTag("Player").GetComponent(PLAYER_CLASS) as Player;
-
+        doors = GameObject.FindGameObjectsWithTag("Door");
 
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 
     public bool isThereCollision(Vector2Int position,GameObject currentObject)
     {
+        this.bullets = GameObject.FindGameObjectsWithTag("Projectile");
+
+        foreach (GameObject door in doors)
+        {
+            //The size of the current object on the UI
+            var UISize = currentObject.GetComponent<SpriteRenderer>().bounds.size;
+            Rect UIobjRect = new Rect((int)Math.Round(position.x - (UISize.x / 2)), (int)Math.Round(position.y - (UISize.y / 2)), (int)Math.Round(UISize.x), (int)Math.Round(UISize.y));
+            Vector2Int obstaclePoint = new Vector2Int((int)Math.Round(door.transform.position.x - (door.transform.localScale.x / 2)), (int)Math.Round(door.transform.position.y - (door.transform.localScale.y / 2)));
+            Vector2Int obstacleRect = new Vector2Int((int)Math.Round(door.transform.localScale.x), (int)Math.Round(door.transform.localScale.y));
+            Rect UIObstacleRect = new Rect(obstaclePoint, obstacleRect);
+
+            if (UIobjRect.Overlaps(UIObstacleRect))
+            {
+                door.GetComponent<TransitionManager>().LoadNextScene();
+                return true;
+            }
+        }
         GameObject[] bullets = GameObject.FindGameObjectsWithTag("Projectile");
-        
+
 
         foreach (GameObject obstacle in obstacles)
         {
@@ -74,7 +93,7 @@ public class SceneController : MonoBehaviour
             }
         }
 
-        
+
 
         return false;
     }
@@ -166,7 +185,7 @@ public class SceneController : MonoBehaviour
             }
         }
 
-        
+
 
 
         //TODO ADD COLLISION WITH THE ENNEMIES
@@ -182,5 +201,5 @@ public class SceneController : MonoBehaviour
         bullet.SetDirection(facing_x, facing_y);
     }
 
-    
+
 }

@@ -45,3 +45,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   obstacles: []
   player: {fileID: 0}
+  bullets: []
+  bulletPrefab: {fileID: 8013947066682193828, guid: 2b6e5b5369336bd41a73af64e62e5f92,
+    type: 3}
+  doors: []
