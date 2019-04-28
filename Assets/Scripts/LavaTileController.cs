@@ -9,36 +9,41 @@ public class LavaTileController : MonoBehaviour
 
     private GameObject[] lava;
     private Player player;
-    private Vector2Int position;
+    private float timeLeft;
 
     // Start is called before the first frame update
     void Start()
     {
         player = player = GameObject.FindGameObjectWithTag("Player").GetComponent("Player") as Player;
         lava = GameObject.FindGameObjectsWithTag("lava");
-
-        position = new Vector2Int((int)playerCharacter.transform.position.x, (int)playerCharacter.transform.position.y);
+        timeLeft = 1;
     }
 
     // Update is called once per frame
     void Update()
     {
-        /*foreach (GameObject tile in lava)
+        foreach (GameObject tile in lava)
         {
             //The size of the current object on the UI
             var UISize = gameObject.GetComponent<SpriteRenderer>().bounds.size;
-            Rect playerRect = new Rect((int)Math.Round(position.x - (UISize.x / 2)), (int)Math.Round(position.y - (UISize.y / 2)), (int)Math.Round(UISize.x), (int)Math.Round(UISize.y));
+            Rect playerRect = new Rect((int)Math.Round(playerCharacter.transform.position.x - (UISize.x / 2)),
+                                       (int)Math.Round(playerCharacter.transform.position.y - (UISize.y / 2)),
+                                       (int)Math.Round(UISize.x), (int)Math.Round(UISize.y));
             Vector2Int lavaTilePoint = new Vector2Int((int)Math.Round(tile.transform.position.x - (tile.transform.localScale.x / 2)), (int)Math.Round(tile.transform.position.y - (tile.transform.localScale.y / 2)));
             Vector2Int lavaTileRect = new Vector2Int((int)Math.Round(tile.transform.localScale.x), (int)Math.Round(tile.transform.localScale.y));
             Rect lavaRect = new Rect(lavaTilePoint, lavaTileRect);
 
             if (playerRect.Overlaps(lavaRect))
             {
-                player.CurrentHealth -= 3;
-                StartCoroutine(DamageOverTime(3));
-                print("hello");
+                timeLeft -= Time.deltaTime;
+
+                if (timeLeft <= 0)
+                {
+                    player.CurrentHealth -= 3;
+                    timeLeft = 1;
+                }
             }
-        }*/
+        }
     }
 
     private IEnumerator DamageOverTime(int seconds)
@@ -49,6 +54,8 @@ public class LavaTileController : MonoBehaviour
         {
             yield return null; // Attend un frame
         }
+
+
     }
 
 }
