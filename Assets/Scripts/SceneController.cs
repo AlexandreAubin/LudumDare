@@ -50,8 +50,11 @@ public class SceneController : MonoBehaviour
 
             if (UIobjRect.Overlaps(UIObstacleRect))
             {
-                door.GetComponent<TransitionManager>().LoadNextScene();
-                return true;
+                if (door.GetComponent<TransitionManager>().isOpen)
+                {
+                    door.GetComponent<TransitionManager>().LoadNextScene();
+                    return true;
+                }
             }
         }
         GameObject[] bullets = GameObject.FindGameObjectsWithTag("Projectile");

@@ -16,14 +16,12 @@ public class TransitionManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        SetOpen();
+        //SetOpen();
     }
 
     public void SetOpen()
     {
         isOpen = true;
-        var spriteRenderer = gameObject.GetComponent<SpriteRenderer>();
-        spriteRenderer.color = Color.green;
     }
 
     public void LoadNextScene()

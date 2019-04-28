@@ -11,14 +11,20 @@ public class SpawnController : MonoBehaviour
     public int HowmanyNME;
     public int nbrNME;
     public int nbrWaveMax;
+    public GameObject exitDoor;
+    public Sprite sprExitDoor;
 
-    public int nbrWave;
+    private int nbrWave;
     private GameObject player;
+    private GameObject door;
 
     // Start is called before the first frame update
     void Start()
     {
+        nbrNME = 0;
+        nbrWave = 1;
         player = GameObject.FindGameObjectWithTag("Player");
+        door = GameObject.FindGameObjectWithTag("Door");
         SpawnNMEBuff();
         /*int random = Random.Range(0, spawnPoints.childCount);
         Instantiate(enemyPrefab, spawnPoints.GetChild(random).transform.position, Quaternion.identity);
@@ -39,8 +45,9 @@ public class SpawnController : MonoBehaviour
             }
             else
             {
-                //OPEN DOOR
-                print("OPEN DOOR");
+                TransitionManager transitionManager = door.GetComponent<TransitionManager>();
+                transitionManager.SetOpen();
+                exitDoor.GetComponent<SpriteRenderer>().sprite = sprExitDoor;
             }
         }
     }
